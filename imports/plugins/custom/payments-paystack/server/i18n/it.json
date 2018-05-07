@@ -1,0 +1,27 @@
+[{
+  "language": "Italian",
+  "i18n": "it",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "esempio di pagamento",
+          "paystackPaymentProviderTitle": "esempio di pagamento"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "esempio di pagamento",
+          "paystackPaymentProviderTitle": "esempio di pagamento",
+          "paystackPaymentProviderDescription": "Esempio Metodo di pagamento"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "Provider esempio",
+          "paystackPaymentSettingsLabel": "esempio di pagamento",
+          "paystackCredentials": "Questo è un esempio di dichiarazione metodo di pagamento.",
+          "apiClientId": "API Client ID",
+          "supportedMethodsLabel": "I fornitori di pagamento hanno sostenuto metodi"
+        }
+      }
+    }
+  }
+}]

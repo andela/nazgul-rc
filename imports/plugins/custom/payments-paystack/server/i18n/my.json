@@ -1,0 +1,27 @@
+[{
+  "language": "Burmese",
+  "i18n": "my",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "ဥပမာအားငွေပေးချေမှုရမည့်",
+          "paystackPaymentProviderTitle": "ဥပမာအားငွေပေးချေမှုရမည့်"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "ဥပမာအားငွေပေးချေမှုရမည့်",
+          "paystackPaymentProviderTitle": "ဥပမာအားငွေပေးချေမှုရမည့်",
+          "paystackPaymentProviderDescription": "ဥပမာအားငွေပေးချေမှုရမည့်နည်းလမ်း"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "ဥပမာအားပေးသူ",
+          "paystackPaymentSettingsLabel": "ဥပမာအားငွေပေးချေမှုရမည့်",
+          "paystackCredentials": "ဒါကဥပမာတစ်ခုပေးချေမှုနည်းလမ်း setting ကိုဖြစ်ပါတယ်။",
+          "apiClientId": "API ကိုလိုင်း ID ကို",
+          "supportedMethodsLabel": "ငွေပေးချေမှုရမည့်ပံ့ပိုးပေးနည်းလမ်းများကိုထောက်ခံ"
+        }
+      }
+    }
+  }
+}]
