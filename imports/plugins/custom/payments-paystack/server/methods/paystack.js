@@ -44,12 +44,8 @@ Meteor.methods({
   "paystackSubmit": function (transactionType, cardData, paymentData) {
     check(transactionType, String);
     check(cardData, {
-      name: String,
-      number: ValidCardNumber,
-      expireMonth: ValidExpireMonth,
-      expireYear: ValidExpireYear,
-      cvv2: ValidCVV,
-      type: String
+      payerName: String,
+      payerEmail: String
     });
 
     check(paymentData, {
