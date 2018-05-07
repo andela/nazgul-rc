@@ -2,7 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { expect } from "meteor/practicalmeteor:chai";
 import { sinon } from "meteor/practicalmeteor:sinon";
 
-import { PaystackApi, RISKY_TEST_CARD } from "./paystackapi";
+import { PaystackApi } from "./paystackapi";
 
 const paymentMethod = {
   processor: "Generic",
@@ -28,8 +28,8 @@ describe("PaystackApi", function () {
 
   it("should return data from ThirdPartyAPI authorize", function () {
     const cardData = {
-      name: "Test User",
-      email: "test@user.com"
+      payerName: "Test User",
+      payerEmail: "test@mail.com"
 
     };
     const paymentData = {
@@ -48,12 +48,8 @@ describe("PaystackApi", function () {
 
   it("should return risk status for flagged test card", function () {
     const cardData = {
-      name: "Test User",
-      number: RISKY_TEST_CARD,
-      expireMonth: "2",
-      expireYear: "2018",
-      cvv2: "123",
-      type: "visa"
+      payerName: "Test User",
+      payerEmail: "test@mail.com"
     };
     const paymentData = {
       currency: "NGN",
@@ -100,12 +96,8 @@ describe("Submit payment", function () {
     // it actually stalls after the entire test is completed
     this.timeout(30000);
     const cardData = {
-      name: "Test User",
-      number: "4242424242424242",
-      expireMonth: "2",
-      expireYear: "2018",
-      cvv2: "123",
-      type: "visa"
+      payerName: "Test User",
+      payerEmail: "test@mail.com"
     };
     const paymentData = {
       currency: "NGN",
@@ -129,9 +121,7 @@ describe("Submit payment", function () {
 
   it("should throw an error if card data is not correct", function () {
     const badCardData = {
-      name: "Test User",
-      cvv2: "123",
-      type: "visa"
+      payerName: "Test User"
     };
 
     const paymentData = {
