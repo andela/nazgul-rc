@@ -1,0 +1,27 @@
+[{
+  "language": "Turkish",
+  "i18n": "tr",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "Örnek Ödeme",
+          "paystackPaymentProviderTitle": "Örnek Ödeme"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "Örnek Ödeme",
+          "paystackPaymentProviderTitle": "Örnek Ödeme",
+          "paystackPaymentProviderDescription": "Örnek Ödeme Yöntemi"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "Örnek Sağlayıcı",
+          "paystackPaymentSettingsLabel": "Örnek Ödeme",
+          "paystackCredentials": "Bu örnek bir ödeme yöntemi ayarıdır.",
+          "apiClientId": "API İstemci Kimliği",
+          "supportedMethodsLabel": "Ödeme sağlayıcısı tarafından desteklenen yöntemler"
+        }
+      }
+    }
+  }
+}]
