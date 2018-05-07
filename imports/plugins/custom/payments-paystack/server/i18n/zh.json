@@ -1,0 +1,27 @@
+[{
+  "language": "Chinese",
+  "i18n": "zh",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "例如付款",
+          "paystackPaymentProviderTitle": "例如付款"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "例如付款",
+          "paystackPaymentProviderTitle": "例如付款",
+          "paystackPaymentProviderDescription": "例如付款方法"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "例如供应商",
+          "paystackPaymentSettingsLabel": "例如付款",
+          "paystackCredentials": "这是一个例子付款方式设置。",
+          "apiClientId": "API客户端ID",
+          "supportedMethodsLabel": "付款提供商支持的方法"
+        }
+      }
+    }
+  }
+}]

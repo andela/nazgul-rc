@@ -1,0 +1,27 @@
+[{
+  "language": "Hungarian",
+  "i18n": "hu",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "példa Fizetési",
+          "paystackPaymentProviderTitle": "példa Fizetési"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "példa Fizetési",
+          "paystackPaymentProviderTitle": "példa Fizetési",
+          "paystackPaymentProviderDescription": "Példa Fizetési mód"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "példa Szolgáltató",
+          "paystackPaymentSettingsLabel": "példa Fizetési",
+          "paystackCredentials": "Ez egy példa a fizetési módszer beállítást.",
+          "apiClientId": "API ügyfél azonosító",
+          "supportedMethodsLabel": "Fizetés szolgáltatója támogatott módszerekkel"
+        }
+      }
+    }
+  }
+}]

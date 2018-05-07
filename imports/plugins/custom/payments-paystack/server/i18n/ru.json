@@ -1,0 +1,27 @@
+[{
+  "language": "Russian",
+  "i18n": "ru",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "Пример оплаты",
+          "paystackPaymentProviderTitle": "Пример оплаты"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "Пример оплаты",
+          "paystackPaymentProviderTitle": "Пример оплаты",
+          "paystackPaymentProviderDescription": "Пример Способ оплаты"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "Пример Провайдер",
+          "paystackPaymentSettingsLabel": "Пример оплаты",
+          "paystackCredentials": "Это установка пример способ оплаты.",
+          "apiClientId": "API идентификатор клиента",
+          "supportedMethodsLabel": "Поддерживаемые методы поставщика платежей"
+        }
+      }
+    }
+  }
+}]

@@ -1,0 +1,27 @@
+[{
+  "language": "Dutch",
+  "i18n": "nl",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "voorbeeld Betaling",
+          "paystackPaymentProviderTitle": "voorbeeld Betaling"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "voorbeeld Betaling",
+          "paystackPaymentProviderTitle": "voorbeeld Betaling",
+          "paystackPaymentProviderDescription": "Voorbeeld Payment Method"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "voorbeeld Provider",
+          "paystackPaymentSettingsLabel": "voorbeeld Betaling",
+          "paystackCredentials": "Dit is een voorbeeld betaalmethode setting.",
+          "apiClientId": "API Client ID",
+          "supportedMethodsLabel": "Betaalmethoden ondersteunde methoden"
+        }
+      }
+    }
+  }
+}]
