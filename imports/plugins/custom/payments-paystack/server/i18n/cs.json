@@ -1,0 +1,27 @@
+[{
+  "language": "Czech",
+  "i18n": "cs",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "Příklad platba",
+          "paystackPaymentProviderTitle": "Příklad platba"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "Příklad platba",
+          "paystackPaymentProviderTitle": "Příklad platba",
+          "paystackPaymentProviderDescription": "Příklad Způsob platby"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "Příklad Poskytovatel",
+          "paystackPaymentSettingsLabel": "Příklad platba",
+          "paystackCredentials": "Jedná se o nastavení příklad způsob platby.",
+          "apiClientId": "API ID klienta",
+          "supportedMethodsLabel": "Metody podporované poskytovatelem plateb"
+        }
+      }
+    }
+  }
+}]

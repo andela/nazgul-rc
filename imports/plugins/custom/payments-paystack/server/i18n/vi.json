@@ -1,0 +1,27 @@
+[{
+  "language": "Vietnamese",
+  "i18n": "vi",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "Ví dụ thanh toán",
+          "paystackPaymentProviderTitle": "Ví dụ thanh toán"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "Ví dụ thanh toán",
+          "paystackPaymentProviderTitle": "Ví dụ thanh toán",
+          "paystackPaymentProviderDescription": "Phương thức thanh toán Ví dụ"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "Nhà cung cấp ví dụ",
+          "paystackPaymentSettingsLabel": "Ví dụ thanh toán",
+          "paystackCredentials": "Đây là cài đặt phương thức thanh toán ví dụ.",
+          "apiClientId": "ID Client API",
+          "supportedMethodsLabel": "Phương thức hỗ trợ nhà cung cấp thanh toán"
+        }
+      }
+    }
+  }
+}]
