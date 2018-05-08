@@ -1,0 +1,27 @@
+[{
+  "language": "Bulgarian",
+  "i18n": "bg",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "Пример плащане",
+          "paystackPaymentProviderTitle": "Пример плащане"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "Пример плащане",
+          "paystackPaymentProviderTitle": "Пример плащане",
+          "paystackPaymentProviderDescription": "Пример Начин на плащане"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "Пример Provider",
+          "paystackPaymentSettingsLabel": "Пример плащане",
+          "paystackCredentials": "Това е настройка за пример начина на плащане.",
+          "apiClientId": "API Client ID",
+          "supportedMethodsLabel": "Методи, поддържани от доставчика на плащания"
+        }
+      }
+    }
+  }
+}]

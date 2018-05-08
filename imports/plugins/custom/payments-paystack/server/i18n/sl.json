@@ -1,0 +1,27 @@
+[{
+  "language": "Slovenian",
+  "i18n": "sl",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "Primer plačila",
+          "paystackPaymentProviderTitle": "Primer plačila"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "Primer plačila",
+          "paystackPaymentProviderTitle": "Primer plačila",
+          "paystackPaymentProviderDescription": "Primer Način plačila"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "Ponudnik Primer",
+          "paystackPaymentSettingsLabel": "Primer plačila",
+          "paystackCredentials": "To je nastavitev metoda plačila primer.",
+          "apiClientId": "API ID odjemalca",
+          "supportedMethodsLabel": "ponudnik plačilnih podprte metode"
+        }
+      }
+    }
+  }
+}]

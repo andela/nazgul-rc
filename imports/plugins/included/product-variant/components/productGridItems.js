@@ -53,7 +53,7 @@ class ProductGridItems extends Component {
   renderMedia() {
     if (this.props.media() === false) {
       return (
-        <span className="product-image" style={{ backgroundImage: "url('/resources/placeholder.gif')" }} />
+        <span className="product-image" style={{ backgroundImage: "url('/resources/sneaker2.jpeg')" }} />
       );
     }
     return (

@@ -1,0 +1,27 @@
+[{
+  "language": "Greek",
+  "i18n": "el",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "παράδειγμα πληρωμής",
+          "paystackPaymentProviderTitle": "παράδειγμα πληρωμής"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "παράδειγμα πληρωμής",
+          "paystackPaymentProviderTitle": "παράδειγμα πληρωμής",
+          "paystackPaymentProviderDescription": "Παράδειγμα Μέθοδος Πληρωμής"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "παράδειγμα Provider",
+          "paystackPaymentSettingsLabel": "παράδειγμα πληρωμής",
+          "paystackCredentials": "Αυτή είναι μια ρύθμιση παράδειγμα τη μέθοδο πληρωμής.",
+          "apiClientId": "API ID πελάτη",
+          "supportedMethodsLabel": "Οι μέθοδοι υποστήριξης του παρόχου πληρωμών"
+        }
+      }
+    }
+  }
+}]

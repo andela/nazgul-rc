@@ -1,0 +1,27 @@
+[{
+  "language": "Romanian",
+  "i18n": "ro",
+  "ns": "paystack-paymentmethod",
+  "translation": {
+    "reaction-payments": {
+      "admin": {
+        "shortcut": {
+          "paystackPaymentProviderLabel": "Exemplul de plată",
+          "paystackPaymentProviderTitle": "Exemplul de plată"
+        },
+        "dashboard": {
+          "paystackPaymentProviderLabel": "Exemplul de plată",
+          "paystackPaymentProviderTitle": "Exemplul de plată",
+          "paystackPaymentProviderDescription": "Exemplul Metoda de plată"
+        },
+        "paymentSettings": {
+          "paystackPaymentLabel": "Exemplul Provider",
+          "paystackPaymentSettingsLabel": "Exemplul de plată",
+          "paystackCredentials": "Aceasta este o setare exemplu metodă de plată.",
+          "apiClientId": "ID-ul client API",
+          "supportedMethodsLabel": "Metode acceptate de furnizor de plăți"
+        }
+      }
+    }
+  }
+}]
