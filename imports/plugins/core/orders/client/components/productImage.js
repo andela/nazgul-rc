@@ -33,7 +33,7 @@ class ProductImage extends Component {
     if (displayMedia(item)) {
       mediaUrl = displayMedia(item).url();
     } else {
-      mediaUrl = "/resources/placeholder.gif";
+      mediaUrl = "/resources/sneaker1.jpg";
     }
 
     return (
