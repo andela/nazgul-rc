@@ -5,7 +5,7 @@ import { Meteor } from "meteor/meteor";
 import { check } from "meteor/check";
 
 Meteor.methods({
-  insertPage: function (pageName, pageAddress, pageContent, userId, shopId, isEnabled, createdAt) {
+  "insertPage"(pageName, pageAddress, pageContent, userId, shopId, isEnabled, createdAt) {
     check(pageName, String);
     check(pageAddress, String);
     check(pageContent, String);
@@ -27,7 +27,7 @@ Meteor.methods({
     check(page, Schemas.StaticPages);
     Collections.StaticPages.insert(page);
   },
-  updatePage: function (_id, pageName, pageAddress, pageContent, userId, shopId, isEnabled, createdAt, updatedAt) {
+  "updatePage"(_id, pageName, pageAddress, pageContent, userId, shopId, isEnabled, createdAt, updatedAt) {
     check(_id, String);
     check(pageName, String);
     check(pageAddress, String);
