@@ -174,7 +174,7 @@ export function sendVerificationEmail(userId, email) {
     // Reaction Information
     contactEmail: "hello@reactioncommerce.com",
     homepage: Meteor.absoluteUrl(),
-    emailLogo: Meteor.absoluteUrl() + "resources/placeholder.gif",
+    emailLogo: Meteor.absoluteUrl() + "resources/sneaker2.jpeg",
     copyrightDate: moment().format("YYYY"),
     legalName: "Reaction Commerce",
     physicalAddress: {

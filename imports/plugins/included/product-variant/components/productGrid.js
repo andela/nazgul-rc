@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Components } from "@reactioncommerce/reaction-components";
-
 class ProductGrid extends Component {
   static propTypes = {
     products: PropTypes.array
@@ -32,6 +31,9 @@ class ProductGrid extends Component {
   render() {
     return (
       <div className="container-main">
+        {/* <div className="slide-shows">
+          <img src={slide1}/>
+        </div> */}
         <div className="product-grid">
           <Components.DragDropProvider>
             <ul className="product-grid-list list-unstyled" id="product-grid-list">
