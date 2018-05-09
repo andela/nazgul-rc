@@ -27,7 +27,7 @@ class AccountsDashboard extends Component {
   componentWillReceiveProps(nextProps) {
     const { adminGroups, accounts, groups } = nextProps;
     const sortedGroups = sortUsersIntoGroups({ groups: sortGroups(adminGroups), accounts });
-    const selectedGroup = adminGroups.find((grp) => grp._id === (this.state.selectedGroup || {})._id);
+    const selectedGroup = adminGroups.find(grp => grp._id === (this.state.selectedGroup || {})._id);
     this.setState({
       adminGroups: sortedGroups,
       groups: sortGroups(groups),
@@ -36,7 +36,7 @@ class AccountsDashboard extends Component {
     });
   }
 
-  handleGroupSelect = (group) => {
+  handleGroupSelect = group => {
     this.setState({ selectedGroup: group });
   };
 
@@ -89,12 +89,8 @@ class AccountsDashboard extends Component {
   render() {
     return (
       <div className="row list-group accounts-table">
-        <div className="col-md-9">
-          {this.renderGroupsTable(this.state.adminGroups)}
-        </div>
-        <div className="col-md-3">
-          {this.renderGroupDetail()}
-        </div>
+        <div className="col-md-9">{this.renderGroupsTable(this.state.adminGroups)}</div>
+        <div className="col-md-3">{this.renderGroupDetail()}</div>
       </div>
     );
   }
