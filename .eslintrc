@@ -29,7 +29,6 @@
         "destructuring": true,
         "forOf": true,
         "generators": false,
-        "modules": true,
         "objectLiteralComputedProperties": true,
         "objectLiteralDuplicateProperties": false,
         "objectLiteralShorthandMethods": true,
