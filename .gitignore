@@ -45,3 +45,5 @@ imports/plugins/custom/*
 
 .reaction/config.json
 reports/
+
+package-lock.json
