@@ -1,0 +1,39 @@
+{
+  "name": "nazgul-rc",
+  "description": "A web app built on the reaction commerce platform",
+  "scripts": {},
+  "env": {
+    "BUILDPACK_CLEAR_CACHE": {
+      "required": true
+    },
+    "BUILDPACK_PRELAUNCH_METEOR": {
+      "required": true
+    },
+    "MONGO_URL": {
+      "required": true
+    },
+    "MONGODB_URL": {
+      "required": true
+    },
+    "ROOT_URL": {
+      "required": true
+    },
+    "TOOL_NODE_FLAGS": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/swrdfish/meteor-buildpack-horse.git"
+    }
+  ]
+}

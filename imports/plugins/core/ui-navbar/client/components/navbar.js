@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Reaction } from "/client/api";
 import { Components } from "@reactioncommerce/reaction-components";
 import { Meteor } from "meteor/meteor";
 import startTour from "../../../../included/adminTour";
@@ -120,11 +121,17 @@ class NavBar extends Component {
   }
 
   renderTakeTourButton() {
+    if (!Reaction.hasPermission("admin")) {
+      return null;
+    }
     return (
       <div className="take-tour">
-        <Components.Button kind="flat" label="Take Tour" onClick={(event) => {
-          startTour(event);
-        }}
+        <Components.Button
+          kind="flat"
+          label="Take Tour"
+          onClick={event => {
+            startTour(event);
+          }}
         />
       </div>
     );
