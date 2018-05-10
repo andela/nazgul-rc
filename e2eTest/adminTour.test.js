@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-expressions */
-const path = require("path");
-// accounts - dropdown
+/* global module */
 const APP_BASE_PATH = "http://localhost:3000";
 
 module.exports = {
@@ -19,10 +17,7 @@ module.exports = {
       .click(".rui.btn.btn-primary.solid.btn-block")
       .pause(3000)
       .click(".take-tour")
-      .assert.containsText(
-        ".introjs-tooltiptext > h3",
-        "Welcome to Reaction Commerce"
-      );
+      .assert.containsText(".introjs-tooltiptext > h3", "Welcome to Reaction Commerce");
     // .waitForElementVisible(".container-medium.index > h5", 1000);
   }
 };
