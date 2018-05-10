@@ -44,4 +44,6 @@ private/custom/*
 
 .reaction/config.json
 
-package-lock.json
+package-lock.
+
+.bashrc
