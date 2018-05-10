@@ -49,5 +49,4 @@ private/custom/*
 .bashrc
 reports/
 
-
 package-lock.json
