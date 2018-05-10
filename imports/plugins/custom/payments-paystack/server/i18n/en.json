@@ -6,17 +6,17 @@
     "reaction-payments": {
       "admin": {
         "shortcut": {
-          "paystackPaymentProviderLabel": "paystack Payment",
-          "paystackPaymentProviderTitle": "paystack Payment"
+          "paystackPaymentProviderLabel": "Paystack Payment",
+          "paystackPaymentProviderTitle": "Paystack Payment"
         },
         "dashboard": {
-          "paystackPaymentProviderLabel": "paystack Payment",
-          "paystackPaymentProviderTitle": "paystack Payment",
-          "paystackPaymentProviderDescription": "paystack Payment Method"
+          "paystackPaymentProviderLabel": "Paystack Payment",
+          "paystackPaymentProviderTitle": "Paystack Payment",
+          "paystackPaymentProviderDescription": "Paystack Payment Method"
         },
         "paymentSettings": {
           "paystackPaymentLabel": "Paystack Provider",
-          "paystackPaymentSettingsLabel": "paystack Payment",
+          "paystackPaymentSettingsLabel": "Paystack Payment",
           "paystackCredentials": "This is an paystack payment method setting.",
           "apiClientId": "API Client ID",
           "supportedMethodsLabel": "Payment provider supported methods"
