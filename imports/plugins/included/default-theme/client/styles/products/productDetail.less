@@ -246,10 +246,27 @@
 .pdp.add-to-cart button {
   flex: 1 1 auto;
   border-radius: 0 @border-radius-base @border-radius-base 0;
-  border: 1px solid @btn-cta-border;
-  background-color: @btn-cta-bg;
+  border: 1px solid #46B29D;
+  background-color: #46B29D;
   color: @btn-success-color;
   font-size: 16px;
+}
+
+.pdp.add-to-cart button:hover {
+  animation-name: light-shadow;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+
+@keyframes light-shadow {
+  10% {
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+    left: 5px;
+  }
+  100% {
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.4);
+  }
 }
 
 .rtl .pdp.add-to-cart button {

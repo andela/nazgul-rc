@@ -1,0 +1,48 @@
+.ratings-and-reviews {
+  padding: 20px 0px;
+  margin-bottom: 30px;
+}
+.fa-star {
+  font-size: 24px;
+  color: #eee;
+}
+.review-form {
+  margin-top: 1em;
+}
+.average-rating {
+  margin-bottom: 20px;
+}
+.rated {
+  color: #324D5C;
+}
+.big-star {
+  font-size: 40px;
+}
+.submit-review {
+  margin-top: 5px;
+}
+.hover-rating {
+  color: #324D5C;
+}
+.pointer {
+  cursor: pointer;
+}
+.blockquote {
+  font-size: 0.9em !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  min-height: 100px;
+}
+.invisible {
+  visibility: hidden;
+}
+.fade-in {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}
+.fade-out {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}

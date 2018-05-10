@@ -55,7 +55,7 @@ class MediaGallery extends Component {
           <img
             alt=""
             className="img-responsive"
-            src={"/resources/placeholder.gif"}
+            src={"/resources/sneaker2.jpeg"}
           />
           <div className="rui badge-container">
             <i className="fa fa-plus fa-2x" />
