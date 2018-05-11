@@ -3,6 +3,12 @@ import PropTypes from "prop-types";
 import _ from "lodash";
 import { TextField, Translation, Checkbox } from "/imports/plugins/core/ui/client/components";
 
+const authorize = "Authorize";
+const deAuthorize = "De-authorize";
+const capture = "Capture";
+const refund = "Refund";
+
+
 class PaystackSettingsForm extends Component {
   constructor(props) {
     super(props);
@@ -13,10 +19,10 @@ class PaystackSettingsForm extends Component {
         support: props.settings.support
       },
       checkbox: {
-        "Authorize": _.includes(props.settings.support, "Authorize"),
-        "De-authorize": _.includes(props.settings.support, "De-authorize"),
-        "Capture": _.includes(props.settings.support, "Capture"),
-        "Refund": _.includes(props.settings.support, "Refund")
+        "Authorize": _.includes(props.settings.support, authorize),
+        "De-authorize": _.includes(props.settings.support, deAuthorize),
+        "Capture": _.includes(props.settings.support, capture),
+        "Refund": _.includes(props.settings.support, refund)
       }
     };
   }
@@ -80,36 +86,36 @@ class PaystackSettingsForm extends Component {
 
           <div>
             <Checkbox
-              label="Authorize"
-              onChange={this.handleCheckBox}
-              name="Authorize"
-              checked={this.state.checkbox.Authorize}
+              label = {authorize}
+              onChange = {this.handleCheckBox}
+              name = {authorize}
+              checked = {this.state.checkbox.Authorize}
             />
           </div>
 
           <div>
             <Checkbox
-              label="De-authorize"
+              label={deAuthorize}
               onChange={this.handleCheckBox}
-              name="De-authorize"
+              name={deAuthorize}
               checked={this.state.checkbox["De-authorize"]}
             />
           </div>
 
           <div>
             <Checkbox
-              label="Capture"
+              label={capture}
               onChange={this.handleCheckBox}
-              name="Capture"
+              name={capture}
               checked={this.state.checkbox.Capture}
             />
           </div>
 
           <div>
             <Checkbox
-              label="Refund"
+              label={refund}
               onChange={this.handleCheckBox}
-              name="Refund"
+              name={refund}
               checked={this.state.checkbox.Refund}
             />
           </div>
