@@ -27,3 +27,4 @@ export const coreOrderNewTemplate = "orders/new";
 export const orderShipped = "orders/shipped";
 export const orderRefunded = "orders/refunded";
 export const orderItemRefund = "orders/itemRefund";
+export const cancelOrder = "orders/cancelOrder";
