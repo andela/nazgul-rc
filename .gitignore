@@ -47,3 +47,4 @@ private/custom/*
 package-lock.
 
 .bashrc
+reports/

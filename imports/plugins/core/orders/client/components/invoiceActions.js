@@ -164,26 +164,25 @@ class InvoiceActions extends Component {
       return (
         <div className="btn-block">
           <div>
-            <Components.ButtonSelect
-              buttons= {[
-                {
-                  name: "Approve",
-                  i18nKeyLabel: "order.approveInvoice",
-                  active: true,
-                  status: "success",
-                  eventAction: "approveInvoice",
-                  bgColor: "bg-success",
-                  buttonType: "submit"
-                }, {
-                  name: "Cancel",
-                  i18nKeyLabel: "order.cancelInvoice",
-                  active: false,
-                  status: "danger",
-                  eventAction: "cancelOrder",
-                  bgColor: "bg-danger",
-                  buttonType: "button"
-                }
-              ]}
+            <Components.Button
+              className="btn btn-danger cancelOrder"
+              bezelStyle="solid"
+              status= "danger"
+              label="Cancel"
+              i18nKeyLabel="order.cancelInvoice"
+              type="button"
+              data-event-action="cancelOrder"
+              style={{ marginBottom: 10,  marginLeft: 200 }}
+            />
+            <Components.Button
+              className="btn btn-success approveOrder"
+              bezelStyle="solid"
+              status= "success"
+              label="Approve"
+              i18nKeyLabel="order.approveInvoice"
+              type="submit"
+              eventAction="approveInvoice"
+              style={{ marginBottom: 10, marginLeft: 20 }}
             />
           </div>
         </div>
