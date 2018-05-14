@@ -5,9 +5,9 @@
 
   <testsuite name="testButtonRateShop"
     errors="0" failures="0" hostname="" id="" package="testButtonRateShop" skipped="0"
-    tests="1" time="42.94" timestamp="Mon, 14 May 2018 16:05:21 GMT">
+    tests="1" time="42.62" timestamp="Mon, 14 May 2018 17:24:59 GMT">
   
-    <testcase name="An admin should be able to cancel an order" classname="testButtonRateShop" time="42.94" assertions="18">
+    <testcase name="An admin should be able to cancel an order" classname="testButtonRateShop" time="42.62" assertions="18">
 
     
 
