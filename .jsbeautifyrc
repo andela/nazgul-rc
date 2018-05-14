@@ -17,5 +17,6 @@
     "wrap_line_length": 120,
     "space_after_anon_function": true,
     "end_with_newline": true,
-    "esversion": 6
+    "esversion": 6,
+    '"sourceType": module
 }
