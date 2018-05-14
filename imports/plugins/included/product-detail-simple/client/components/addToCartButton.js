@@ -16,7 +16,7 @@ class AddToCartButton extends Component {
   render() {
     if (this.hasVariants) {
       return (
-        <div className="pdp add-to-cart block">
+        <div className="pdp add-to-cart">
           <input
             className="form-control input-md"
             id="add-to-cart-quantity"
@@ -25,6 +25,7 @@ class AddToCartButton extends Component {
             onChange={this.handleCartQuantityChange}
             type="number"
             value={this.props.cartQuantity}
+            placeholder="Qty"
           />
           <button
             className="input-group-addon add-to-cart-text js-add-to-cart"
