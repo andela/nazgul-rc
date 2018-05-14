@@ -1,0 +1,19 @@
+{
+  "src_folders": ["./e2eTest"],
+  "output_folder": "reports",
+
+  "test_settings": {
+    "default": {
+      "launch_url": "http://localhost",
+      "selenium_port": 4444,
+      "selenium_host": "localhost",
+      "desiredCapabilities": {
+        "args": ["window-size=3000,3000"],
+        "browserName": "chrome",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true,
+        "elementScrollBehavior": 1
+      }
+    }
+  }
+}

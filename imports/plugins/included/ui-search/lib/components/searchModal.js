@@ -24,7 +24,7 @@ class SearchModal extends Component {
     return (
       <div className="rui search-modal-input">
         <label data-i18n="search.searchInputLabel">Search {this.props.siteName}</label>
-        <i className="fa fa-search search-icon" />
+        <i className="fa fa-search seach-side search-icon" />
         <TextField
           className="search-input"
           textFieldStyle={{ marginBottom: 0 }}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="1"
+            tests="1">
+
+  <testsuite name="adminTour.test"
+    errors="1" failures="1" hostname="" id="" package="adminTour.test" skipped="0"
+    tests="1" time="6.942" timestamp="Mon, 14 May 2018 10:31:22 GMT">
+  
+    <testcase name="User should be able to take tour anytime" classname="adminTour.test" time="6.942" assertions="4">
+
+    
+
+    
+
+      <failure message="Testing if element &lt;span&gt; is visible. Element could not be located.">    at Object.User should be able to take tour anytime (/Users/efosa/nazgul-rc/e2eTest/adminTour.test.js:12:15)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)</failure>
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+      ERROR: Unable to locate element: &#34;span&#34; using: css selector
+    at F.command (/usr/local/lib/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/usr/local/lib/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/usr/local/lib/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/usr/local/lib/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/usr/local/lib/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/usr/local/lib/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/usr/local/lib/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/usr/local/lib/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/usr/local/lib/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/usr/local/lib/node_modules/nightwatch/lib/core/queue.js:97:8)
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>
