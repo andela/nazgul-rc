@@ -14,10 +14,12 @@
     "Alerts": true,  // this needs to get cleaned up, but ignoring for now
     "jest": true,
     "expect": true,
-    "test": true
+    "test": true,
+    "PaystackPop": true
   },
   "parserOptions": {
      "ecmaVersion": 6,
+     "esversion": 6,
      "sourceType": "module",
       "ecmaFeatures": {
         "arrowFunctions": true,
@@ -27,7 +29,6 @@
         "destructuring": true,
         "forOf": true,
         "generators": false,
-        "modules": true,
         "objectLiteralComputedProperties": true,
         "objectLiteralDuplicateProperties": false,
         "objectLiteralShorthandMethods": true,

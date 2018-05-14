@@ -6,7 +6,7 @@
     "indent_level": 0,
     "indent_size": 2,
     "indent_with_tabs": false,
-    "jslint_happy": true,
+    "jslint_happy": false,
     "keep_array_indentation": false,
     "keep_function_indentation": false,
     "max_preserve_newlines": 2,
@@ -16,5 +16,6 @@
     "unescape_strings": false,
     "wrap_line_length": 120,
     "space_after_anon_function": true,
-    "end_with_newline": true
+    "end_with_newline": true,
+    "esversion": 6
 }
