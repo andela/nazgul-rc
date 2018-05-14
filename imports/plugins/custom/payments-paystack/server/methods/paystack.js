@@ -17,19 +17,19 @@ function luhnValid(x) {
   }, 0) % 10 === 0;
 }
 
-const ValidCardNumber = Match.Where(function (x) {
+export const ValidCardNumber = Match.Where(function (x) {
   return /^[0-9]{13,16}$/.test(x) && luhnValid(x);
 });
 
-const ValidExpireMonth = Match.Where(function (x) {
+export const ValidExpireMonth = Match.Where(function (x) {
   return /^[0-9]{1,2}$/.test(x);
 });
 
-const ValidExpireYear = Match.Where(function (x) {
+export const ValidExpireYear = Match.Where(function (x) {
   return /^[0-9]{4}$/.test(x);
 });
 
-const ValidCVV = Match.Where(function (x) {
+export const ValidCVV = Match.Where(function (x) {
   return /^[0-9]{3,4}$/.test(x);
 });
 
