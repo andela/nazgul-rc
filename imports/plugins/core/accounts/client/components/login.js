@@ -8,13 +8,13 @@ class Login extends Component {
     credentials: PropTypes.object,
     loginFormCurrentView: PropTypes.string,
     uniqueId: PropTypes.string
-  }
+  };
 
   static defaultProps = {
     credentials: {},
     loginFormCurrentView: "loginFormSignInView",
     uniqueId: Random.id()
-  }
+  };
 
   constructor(props) {
     super(props);
