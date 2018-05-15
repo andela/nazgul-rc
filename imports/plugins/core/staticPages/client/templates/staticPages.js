@@ -21,7 +21,7 @@ Template.staticPages.onRendered(() => {
   });
 });
 
-Template.staticPagesPanel.onCreated(function() {
+Template.staticPagesPanel.onCreated(function () {
   this.autorun(() => {
     this.subscribe("StaticPages");
   });
@@ -120,7 +120,7 @@ Template.staticPagesForm.events({
         .find(".edit-page-data")
         .attr("id") === undefined
     ) {
-      Meteor.call("insertPage", pageName, pageAddress, pageContent, userId, shopId, isEnabled, createdAt, function(
+      Meteor.call("insertPage", pageName, pageAddress, pageContent, userId, shopId, isEnabled, createdAt, function (
         err
       ) {
         if (err) {
@@ -148,7 +148,7 @@ Template.staticPagesForm.events({
           isEnabled,
           createdAt,
           updatedAt,
-          function(err) {
+          function (err) {
             if (err) {
               Alerts.toast(err.message, "error");
             } else {
