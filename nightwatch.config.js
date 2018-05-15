@@ -1,6 +1,6 @@
 /* global module, require */
 require("babel-register");
 module.exports = (settings => {
-  settings.testWorkers = false;
+  settings.test_workers = false;
   return settings;
 })(require("./nightwatch.json"));
