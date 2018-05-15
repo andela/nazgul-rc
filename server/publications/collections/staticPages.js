@@ -6,7 +6,7 @@ import { Meteor } from "meteor/meteor";
  * Static Pages
  */
 
-Meteor.publish("StaticPages", function() {
+Meteor.publish("StaticPages", function () {
   const shopId = Reaction.getShopId();
   if (!shopId) {
     return this.ready();

@@ -52,19 +52,19 @@ module.exports = {
       .click("#sp-show")
       .click(".form-group.save-static-page.btn.btn-default");
 
-    // User should be able to navigate to newly created page  
+    // User should be able to navigate to newly created page
     browser
-      .url(APP_BASE_PATH + '/pages/about-us')
+      .url(APP_BASE_PATH + "/pages/about-us")
       .waitForElementVisible("body", 5000)
       .assert.urlEquals(`${APP_BASE_PATH}/pages/about-us`)
       .pause(5000)
-      .assert.visible('.section')
+      .assert.visible(".section")
 
       // check if page title is visible
-      .assert.visible('.static-title')
+      .assert.visible(".static-title")
 
       // check if page title is correct
-      .assert.containsText('.static-title', 'About Us')
+      .assert.containsText(".static-title", "About Us")
 
       // close browser when simulation finishes
       .end();
