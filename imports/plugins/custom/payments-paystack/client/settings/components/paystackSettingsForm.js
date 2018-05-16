@@ -60,7 +60,7 @@ class PaystackSettingsForm extends Component {
       <div>
         { (!settings.secretKey && !settings.publicKey) &&
           <div className="alert alert-info">
-            <Translation defaultValue="Paystack Credentials" i18nKey="admin.paymentSettings.paystackCredentials"/>
+            <a href="https://dashboard.paystack.com/"><Translation href="https://dashboard.paystack.com/" defaultValue="Paystack Credentials" i18nKey="admin.paymentSettings.paystackCredentials"/></a>
           </div>
         }
         <form onSubmit={this.handleSubmit}>
