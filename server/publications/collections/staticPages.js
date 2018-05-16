@@ -14,3 +14,5 @@ Meteor.publish("StaticPages", function () {
     shopId
   });
 });
+
+
