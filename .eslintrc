@@ -18,7 +18,6 @@
     "PaystackPop": true
   },
   "parserOptions": {
-<<<<<<< HEAD
      "ecmaVersion": 6,
      "esversion": 6,
      "sourceType": "module",
@@ -40,29 +39,6 @@
         "jsx": true
       },
      "allowImportExportEverywhere": true
-=======
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "arrowFunctions": true,
-      "blockBindings": true,
-      "classes": true,
-      "defaultParams": true,
-      "destructuring": true,
-      "forOf": true,
-      "generators": false,
-      "modules": true,
-      "objectLiteralComputedProperties": true,
-      "objectLiteralDuplicateProperties": false,
-      "objectLiteralShorthandMethods": true,
-      "objectLiteralShorthandProperties": true,
-      "spread": true,
-      "superInFunctions": true,
-      "templateStrings": true,
-      "jsx": true
-    },
-    "allowImportExportEverywhere": true
->>>>>>> refactor:
   },
   "plugins": ["react"],
   // NOTE: We're now using eslint-4
@@ -85,21 +61,10 @@
     "no-shadow": 2, // http://eslint.org/docs/rules/no-shadow
     "no-shadow-restricted-names": 2, // http://eslint.org/docs/rules/no-shadow-restricted-names
     "no-const-assign": 2, // http://eslint.org/docs/rules/no-const-assign
-<<<<<<< HEAD
     "no-unused-vars": [0, { // http://eslint.org/docs/rules/no-unused-vars
       "vars": "local",
       "args": "after-used"
     }],
-=======
-    "no-unused-vars": [
-      2,
-      {
-        // http://eslint.org/docs/rules/no-unused-vars
-        "vars": "local",
-        "args": "after-used"
-      }
-    ],
->>>>>>> refactor:
     "no-use-before-define": [2, "nofunc"], // http://eslint.org/docs/rules/no-use-before-define
     "no-implicit-globals": 2, // http://eslint.org/docs/rules/no-implicit-globals
 
