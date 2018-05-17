@@ -1,16 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Blaze from "meteor/gadicc:blaze-react-component";
-import {
-  DropDownMenu,
-  MenuItem,
-  FlatButton,
-  Toolbar,
-  ToolbarGroup,
-  Switch,
-  Icon,
-  VerticalDivider
-} from "/imports/plugins/core/ui/client/components";
+import { DropDownMenu, MenuItem, FlatButton, Toolbar, ToolbarGroup, Switch, Icon, VerticalDivider } from "/imports/plugins/core/ui/client/components";
 import { Translatable } from "/imports/plugins/core/ui/client/providers";
 import { Reaction } from "/client/api";
 
@@ -33,24 +24,24 @@ class PublishControls extends Component {
     translation: PropTypes.shape({
       lang: PropTypes.string
     })
-  }
+  };
 
   static defaultProps = {
     showViewAsControls: true
-  }
+  };
 
   onViewContextChange = (event, isChecked) => {
     if (typeof this.props.onViewContextChange === "function") {
       this.props.onViewContextChange(event, isChecked ? "administrator" : "customer");
     }
-  }
+  };
 
   // Passthrough to shopSelectChange handler in container above
   onShopSelectChange = (event, shopId) => {
     if (typeof this.props.onShopSelectChange === "function") {
       this.props.onShopSelectChange(event, shopId);
     }
-  }
+  };
 
   renderViewControls() {
     if (this.props.showViewAsControls) {
@@ -78,23 +69,12 @@ class PublishControls extends Component {
     let menuItems;
     if (Array.isArray(this.props.shops)) {
       menuItems = this.props.shops.map((shop, index) => {
-        return (
-          <MenuItem
-            label={shop.name}
-            selectLabel={shop.name}
-            value={shop._id}
-            key={index}
-          />
-        );
+        return <MenuItem label={shop.name} selectLabel={shop.name} value={shop._id} key={index} />;
       });
     }
 
     return (
-      <DropDownMenu
-        onChange={this.onShopSelectChange}
-        value={this.props.shopId}
-        closeOnClick={true}
-      >
+      <DropDownMenu onChange={this.onShopSelectChange} value={this.props.shopId} closeOnClick={true}>
         {menuItems}
       </DropDownMenu>
     );
@@ -145,6 +125,7 @@ class PublishControls extends Component {
           icon={"fa fa-plus"}
           tooltip={"Add Product"}
           onClick={this.props.onAddProduct}
+          className={"addProduct"}
         />
       );
     }
@@ -155,9 +136,7 @@ class PublishControls extends Component {
   renderPackageButons() {
     if (Array.isArray(this.props.packageButtons)) {
       return this.props.packageButtons.map((packageButton, index) => {
-        return (
-          <FlatButton {...packageButton} key={index} />
-        );
+        return <FlatButton {...packageButton} key={index} />;
       });
     }
 
@@ -167,14 +146,9 @@ class PublishControls extends Component {
   renderCustomControls() {
     if (this.props.dashboardHeaderTemplate && this.props.hasCreateProductAccess) {
       if (this.props.isEnabled) {
-        return [
-          <VerticalDivider key="customControlsVerticaldivider" />,
-          <Blaze key="customControls" template={this.props.dashboardHeaderTemplate} />
-        ];
+        return [<VerticalDivider key="customControlsVerticaldivider" />, <Blaze key="customControls" template={this.props.dashboardHeaderTemplate} />];
       }
-      return [
-        <Blaze key="customControls" template={this.props.dashboardHeaderTemplate} />
-      ];
+      return [<Blaze key="customControls" template={this.props.dashboardHeaderTemplate} />];
     }
 
     return null;

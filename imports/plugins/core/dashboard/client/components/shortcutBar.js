@@ -43,6 +43,7 @@ class ShortcutBar extends Component {
                 tooltip={packageData.label}
                 value={packageData}
                 tooltipAttachment="middle left"
+                className={`nazgul-for-all-${index}`}
               />
             );
           });

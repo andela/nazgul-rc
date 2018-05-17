@@ -11,7 +11,7 @@
     "Assets": true, // Meteor global
     "Package": true, // Meteor global
     "FS": true, // gridFS,
-    "Alerts": true,  // this needs to get cleaned up, but ignoring for now
+    "Alerts": true, // this needs to get cleaned up, but ignoring for now
     "jest": true,
     "expect": true,
     "test": true,
@@ -29,6 +29,7 @@
         "destructuring": true,
         "forOf": true,
         "generators": false,
+        "modules": true,
         "objectLiteralComputedProperties": true,
         "objectLiteralDuplicateProperties": false,
         "objectLiteralShorthandMethods": true,
@@ -104,9 +105,12 @@
     "react/jsx-closing-bracket-location": 1,
     "react/jsx-curly-spacing": 1,
     "react/jsx-indent-props": [1, 2],
-    "react/jsx-max-props-per-line": [1, {
-      "maximum": 4
-    }],
+    "react/jsx-max-props-per-line": [
+      1,
+      {
+        "maximum": 4
+      }
+    ],
     "react/jsx-no-bind": 0,
     "react/jsx-no-duplicate-props": 1,
     "react/jsx-no-literals": 0,
@@ -132,20 +136,31 @@
     /**
      * Best practices
      */
-    "consistent-return": [0, { // http://eslint.org/docs/rules/consistent-return
-      "treatUndefinedAsUnspecified": true
-    }],
+    "consistent-return": [
+      0,
+      {
+        // http://eslint.org/docs/rules/consistent-return
+        "treatUndefinedAsUnspecified": true
+      }
+    ],
     "curly": [2, "multi-line"], // http://eslint.org/docs/rules/curly
     "default-case": 2, // http://eslint.org/docs/rules/default-case
-    "dot-notation": [2, { // http://eslint.org/docs/rules/dot-notation
-      "allowKeywords": true
-    }],
+    "dot-notation": [
+      2,
+      {
+        // http://eslint.org/docs/rules/dot-notation
+        "allowKeywords": true
+      }
+    ],
     "eqeqeq": 2, // http://eslint.org/docs/rules/eqeqeq
     "guard-for-in": 2, // http://eslint.org/docs/rules/guard-for-in
-    "prefer-const": [1, {
+    "prefer-const": [
+      1,
+      {
         "destructuring": "any",
         "ignoreReadBeforeAssign": false
-    }],
+      }
+    ],
     "no-caller": 2, // http://eslint.org/docs/rules/no-caller
     "no-else-return": 2, // http://eslint.org/docs/rules/no-else-return
     "no-eq-null": 2, // http://eslint.org/docs/rules/no-eq-null
@@ -178,59 +193,94 @@
     "vars-on-top": 2, // http://eslint.org/docs/rules/vars-on-top
     "wrap-iife": [2, "any"], // http://eslint.org/docs/rules/wrap-iife
     "yoda": 2, // http://eslint.org/docs/rules/yoda
-    "max-len": [1, 160, 2, {
-      "ignoreComments": true,
-      "ignoreUrls": true
-    }], // http://eslint.org/docs/rules/max-len
-    "require-jsdoc": [0, {
-      "require": {
-        "FunctionDeclaration": true,
-        "MethodDefinition": false,
-        "ClassDeclaration": false,
-        "ArrowFunctionExpression": false
+    "max-len": [
+      1,
+      160,
+      2,
+      {
+        "ignoreComments": true,
+        "ignoreUrls": true
+      }
+    ], // http://eslint.org/docs/rules/max-len
+    "require-jsdoc": [
+      0,
+      {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": false,
+          "ClassDeclaration": false,
+          "ArrowFunctionExpression": false
         }
-    }], // https://eslint.org/docs/rules/require-jsdoc
-    "valid-jsdoc": [0, {
-      "prefer": {
-        "arg": "param",
-        "argument": "param"
+      }
+    ], // https://eslint.org/docs/rules/require-jsdoc
+    "valid-jsdoc": [
+      0,
+      {
+        "prefer": {
+          "arg": "param",
+          "argument": "param"
         }
-    }], // http://eslint.org/docs/rules/valid-jsdoc
+      }
+    ], // http://eslint.org/docs/rules/valid-jsdoc
     "quote-props": [2, "consistent-as-needed"], // http://eslint.org/docs/rules/quote-props
     /**
      * Style
      */
-    "indent": [2, 2, {"SwitchCase": 1}], // http://eslint.org/docs/rules/indent
-    "brace-style": [2, // http://eslint.org/docs/rules/brace-style
-      "1tbs", {
+    "indent": [2, 2, { "SwitchCase": 1 }], // http://eslint.org/docs/rules/indent
+    "brace-style": [
+      2, // http://eslint.org/docs/rules/brace-style
+      "1tbs",
+      {
         "allowSingleLine": true
       }
     ],
     "quotes": [
-      2, "double", "avoid-escape" // http://eslint.org/docs/rules/quotes
+      2,
+      "double",
+      "avoid-escape" // http://eslint.org/docs/rules/quotes
     ],
-    "camelcase": [2, { // http://eslint.org/docs/rules/camelcase
-      "properties": "always"
-    }],
-    "comma-spacing": [2, { // http://eslint.org/docs/rules/comma-spacing
-      "before": false,
-      "after": true
-    }],
+    "camelcase": [
+      2,
+      {
+        // http://eslint.org/docs/rules/camelcase
+        "properties": "always"
+      }
+    ],
+    "comma-spacing": [
+      2,
+      {
+        // http://eslint.org/docs/rules/comma-spacing
+        "before": false,
+        "after": true
+      }
+    ],
     "comma-style": [2, "last"], // http://eslint.org/docs/rules/comma-style
     "eol-last": 2, // http://eslint.org/docs/rules/eol-last
     "func-names": 0, // http://eslint.org/docs/rules/func-names
-    "func-style": [2, "declaration", {"allowArrowFunctions": true }], // http://eslint.org/docs/rules/func-style
-    "key-spacing": [2, { // http://eslint.org/docs/rules/key-spacing
-      "beforeColon": false,
-      "afterColon": true
-    }],
-    "new-cap": [0, { // http://eslint.org/docs/rules/new-cap  (turned off for now, as it complains on all Match)
-      "newIsCap": true,
-      "capIsNewExceptions": ["Match", "OneOf", "Optional"]
-    }],
-    "no-multiple-empty-lines": [2, { // http://eslint.org/docs/rules/no-multiple-empty-lines
-      "max": 2
-    }],
+    "func-style": [2, "declaration", { "allowArrowFunctions": true }], // http://eslint.org/docs/rules/func-style
+    "key-spacing": [
+      2,
+      {
+        // http://eslint.org/docs/rules/key-spacing
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    "new-cap": [
+      0,
+      {
+        // http://eslint.org/docs/rules/new-cap  (turned off for now, as it complains on all Match)
+        "newIsCap": true,
+        "capIsNewExceptions": ["Match", "OneOf", "Optional"]
+      }
+    ],
+    "no-multiple-empty-lines": [
+      2,
+      {
+        // http://eslint.org/docs/rules/no-multiple-empty-lines
+        "max": 2
+      }
+    ],
     "no-nested-ternary": 2, // http://eslint.org/docs/rules/no-nested-ternary
     "no-new-object": 2, // http://eslint.org/docs/rules/no-new-object
     "no-array-constructor": 2, // http://eslint.org/docs/rules/no-array-constructor
@@ -241,16 +291,23 @@
     "one-var": [2, "never"], // http://eslint.org/docs/rules/one-var
     "padded-blocks": [2, "never"], // http://eslint.org/docs/rules/padded-blocks
     "semi": [2, "always"], // http://eslint.org/docs/rules/semi
-    "semi-spacing": [2, { // http://eslint.org/docs/rules/semi-spacing
-      "before": false,
-      "after": true
-    }],
+    "semi-spacing": [
+      2,
+      {
+        // http://eslint.org/docs/rules/semi-spacing
+        "before": false,
+        "after": true
+      }
+    ],
     "keyword-spacing": 2, // http://eslint.org/docs/rules/keyword-spacing
     "space-before-blocks": 2, // http://eslint.org/docs/rules/space-before-blocks
-    "space-before-function-paren": [2, {
-      "anonymous": "always",
-      "named": "never"
-    }], // http://eslint.org/docs/rules/space-before-function-paren
+    "space-before-function-paren": [
+      2,
+      {
+        "anonymous": "always",
+        "named": "never"
+      }
+    ], // http://eslint.org/docs/rules/space-before-function-paren
     "space-infix-ops": 2, // http://eslint.org/docs/rules/space-infix-ops
     "space-in-parens": [2, "never"], // http://eslint.org/docs/rules/space-in-parens
     "spaced-comment": [2, "always"], // http://eslint.org/docs/rules/spaced-comment
