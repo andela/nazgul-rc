@@ -17,7 +17,7 @@
         "paymentSettings": {
           "paystackPaymentLabel": "Paystack Provider",
           "paystackPaymentSettingsLabel": "Paystack Payment",
-          "paystackCredentials": "This is an paystack payment method setting.",
+          "paystackCredentials": "Don't have Paystack Keys?, Get it here!",
           "apiClientId": "API Client ID",
           "supportedMethodsLabel": "Payment provider supported methods"
         }

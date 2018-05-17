@@ -118,6 +118,12 @@ class NavBar extends Component {
       </div>
     );
   }
+  renderStaticPages() {
+    return (
+      <Components.StaticPagesComponent />
+    );
+  }
+
 
   renderTakeTourButton() {
     return (
@@ -141,6 +147,7 @@ class NavBar extends Component {
         {this.renderNotificationIcon()}
         {this.renderLanguage()}
         {this.renderCurrency()}
+        {this.renderStaticPages()}
         {this.renderMainDropdown()}
         {this.renderCartContainerAndPanel()}
       </div>
