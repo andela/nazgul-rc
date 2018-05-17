@@ -23,20 +23,20 @@
         "required": true
       }
     },
-    "formation": {
-      "web": {
-        "quantity": 1
-      }
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
     },
-    "addons": [
-  
-    ],
-    "buildpacks": [
-      {
-        "url": "heroku/nodejs"
-      },
-      {
-        "url": "https://github.com/swrdfish/meteor-buildpack-horse.git"
-      }
-    ]
-  }
+    {
+      "url": "https://github.com/swrdfish/meteor-buildpack-horse.git"
+    }
+  ]
+}
