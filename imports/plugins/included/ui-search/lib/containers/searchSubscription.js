@@ -6,9 +6,7 @@ import SearchModal from "../components/searchModal";
 
 class SearchSubscription extends Component {
   render() {
-    return (
-      <SearchModal {...this.props}/>
-    );
+    return <SearchModal {...this.props} />;
   }
 }
 
@@ -21,7 +19,7 @@ function getProductHashtags(productResults) {
   const foundHashtags = {}; // Object to keep track of results for O(1) lookup
   return productResults.reduce((hashtags, product) => {
     if (Array.isArray(product.hashtags)) {
-      product.hashtags.forEach((tag) => {
+      product.hashtags.forEach(tag => {
         // If we haven't added this tag yet, push it and add it to the foundHashtags dict
         if (!foundHashtags[tag]) {
           hashtags.push(tag);
@@ -37,6 +35,8 @@ function composer(props, onData) {
   const searchResultsSubscription = Meteor.subscribe("SearchResults", props.searchCollection, props.value, props.facets);
   const shopMembersSubscription = Meteor.subscribe("ShopMembers");
 
+  console.log("========================> ", props.filterKey);
+
   if (searchResultsSubscription.ready() && shopMembersSubscription.ready()) {
     const siteName = getSiteName();
     let productResults = [];
@@ -47,8 +47,7 @@ function composer(props, onData) {
     * Product Search
     */
     if (props.searchCollection === "products") {
-      productResults = Collections.ProductSearch.find().fetch();
-
+      productResults = Collections.ProductSearch.find(props.filterKey).fetch();
       const productHashtags = getProductHashtags(productResults);
       tagSearchResults = Collections.Tags.find({
         _id: { $in: productHashtags }
