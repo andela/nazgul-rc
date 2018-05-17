@@ -120,6 +120,12 @@ class NavBar extends Component {
     );
   }
 
+  renderStaticPages() {
+    return (
+      <Components.StaticPagesComponent />
+    );
+  }
+
   renderTakeTourButton() {
     if (!Reaction.hasPermission("admin")) {
       return null;
@@ -148,6 +154,7 @@ class NavBar extends Component {
         {this.renderNotificationIcon()}
         {this.renderLanguage()}
         {this.renderCurrency()}
+        {this.renderStaticPages()}
         {this.renderMainDropdown()}
         {this.renderCartContainerAndPanel()}
       </div>
