@@ -14,10 +14,12 @@
     "Alerts": true, // this needs to get cleaned up, but ignoring for now
     "jest": true,
     "expect": true,
-    "test": true
+    "test": true,
+    "PaystackPop": true
   },
   "parserOptions": {
     "ecmaVersion": 6,
+    "esversion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
       "arrowFunctions": true,
@@ -61,7 +63,7 @@
     "no-shadow-restricted-names": 2, // http://eslint.org/docs/rules/no-shadow-restricted-names
     "no-const-assign": 2, // http://eslint.org/docs/rules/no-const-assign
     "no-unused-vars": [
-      2,
+      0,
       {
         // http://eslint.org/docs/rules/no-unused-vars
         "vars": "local",
@@ -82,7 +84,7 @@
     "no-constant-condition": 1, // http://eslint.org/docs/rules/no-constant-condition
     "no-dupe-keys": 2, // http://eslint.org/docs/rules/no-dupe-keys
     "no-duplicate-case": 2, // http://eslint.org/docs/rules/no-duplicate-case
-    "no-empty": 2, // http://eslint.org/docs/rules/no-empty
+    "no-empty": 0, // http://eslint.org/docs/rules/no-empty
     "no-ex-assign": 2, // http://eslint.org/docs/rules/no-ex-assign
     "no-extra-boolean-cast": 0, // http://eslint.org/docs/rules/no-extra-boolean-cast
     "no-extra-semi": 2, // http://eslint.org/docs/rules/no-extra-semi
