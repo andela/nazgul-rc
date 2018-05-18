@@ -17,8 +17,7 @@ module.exports = {
       .click(".rui.btn.btn-primary.solid.btn-block")
       .pause(3000)
       .click(".take-tour")
-      .assert.containsText(".introjs-tooltiptext > h3", "Welcome to Reaction Commerce")
-
+      .assert.containsText(".introjs-tooltiptext > h3", "Welcome to Reaction Commerce");
       // close browser when simulation finishes
       .end();
     // .waitForElementVisible(".container-medium.index > h5", 1000);
