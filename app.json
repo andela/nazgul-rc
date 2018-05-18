@@ -12,9 +12,6 @@
     "MONGO_URL": {
       "required": true
     },
-    "MONGODB_URL": {
-      "required": true
-    },
     "ROOT_URL": {
       "required": true
     },
