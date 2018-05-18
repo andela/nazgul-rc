@@ -72,6 +72,7 @@
     "lodash.pick": "^4.4.0",
     "match-sorter": "^1.8.0",
     "meteor-node-stubs": "^0.2.11",
+    "meteor-random": "0.0.3",
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.16",
     "nexmo": "^2.0.2",

@@ -189,6 +189,10 @@ export default function blocks() {
               paddingTop: 20
             }
           }
+        },
+
+        {
+          component: "RatingsAndReviewsComponent"
         }
 
       ]
