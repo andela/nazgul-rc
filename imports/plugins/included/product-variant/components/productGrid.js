@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Components } from "@reactioncommerce/reaction-components";
+import startTour from "../../adminTour";
+
 class ProductGrid extends Component {
   static propTypes = {
     products: PropTypes.array
+  };
+
+  componentDidMount() {
+    startTour();
   }
 
-  renderProductGridItems = (products) => {
+  renderProductGridItems = products => {
     if (Array.isArray(products)) {
       return products.map((product, index) => {
-        return (
-          <Components.ProductGridItems
-            {...this.props}
-            product={product} key={index} index={index}
-          />
-        );
+        return <Components.ProductGridItems {...this.props} product={product} key={index} index={index} />;
       });
     }
     return (
@@ -26,7 +27,7 @@ class ProductGrid extends Component {
         </div>
       </div>
     );
-  }
+  };
 
   render() {
     return (

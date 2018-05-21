@@ -810,6 +810,9 @@ export const methods = {
       } else if (action === "itemRefund") {
         tpl = "orders/itemRefund";
         subject = "orders/itemRefund/subject";
+      } else if (action === "cancelled") {
+        tpl = "orders/cancelOrder";
+        subject = "orders/cancelOrder/subject";
       } else {
         tpl = `orders/${order.workflow.status}`;
         subject = `orders/${order.workflow.status}/subject`;

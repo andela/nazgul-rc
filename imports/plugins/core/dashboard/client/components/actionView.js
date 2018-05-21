@@ -8,22 +8,16 @@ import "velocity-animate";
 import "velocity-animate/velocity.ui";
 import { VelocityTransitionGroup } from "velocity-react";
 import debounce from "lodash/debounce";
-import {
-  IconButton,
-  Translation,
-  Overlay
-} from "/imports/plugins/core/ui/client/components";
+import { IconButton, Translation, Overlay } from "/imports/plugins/core/ui/client/components";
 import { getComponent } from "@reactioncommerce/reaction-components";
 
-
-const getStyles = (props) => {
+const getStyles = props => {
   let viewSize = 400;
   const actionView = props.actionView || {};
   const provides = actionView.provides || [];
   // legacy provides could be a string, is an array since 1.5.0, check for either.
   // prototype.includes has the fortunate side affect of checking string equality as well as array inclusion.
-  const isBigView = provides.includes("dashboard") ||
-                    (provides.includes("shortcut") && actionView.container === "dashboard");
+  const isBigView = provides.includes("dashboard") || (provides.includes("shortcut") && actionView.container === "dashboard");
 
   if (isBigView) {
     viewSize = "90vw";
@@ -145,7 +139,7 @@ class ActionView extends Component {
     isActionViewAtRootView: PropTypes.bool,
     isDetailViewAtRootView: PropTypes.bool,
     language: PropTypes.string
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -219,10 +213,7 @@ class ActionView extends Component {
       } catch (e) {
         return (
           <div style={this.styles.masterView} className="master">
-            <Blaze
-              {...this.props.actionView.data}
-              template={this.props.actionView.template}
-            />
+            <Blaze {...this.props.actionView.data} template={this.props.actionView.template} />
           </div>
         );
       }
@@ -235,10 +226,7 @@ class ActionView extends Component {
     if (this.props.detailView && typeof this.props.detailView.template === "string") {
       return (
         <div style={this.styles.detailView} className="detail">
-          <Blaze
-            {...this.props.detailView.data}
-            template={this.props.detailView.template}
-          />
+          <Blaze {...this.props.detailView.data} template={this.props.detailView.template} />
         </div>
       );
     }
@@ -258,28 +246,14 @@ class ActionView extends Component {
     let button;
 
     if (this.props.isActionViewAtRootView === false) {
-      button = (
-        <IconButton
-          bezelStyle={"flat"}
-          icon="fa fa-arrow-left"
-          onClick={this.props.handleActionViewBack}
-        />
-      );
+      button = <IconButton bezelStyle={"flat"} icon="fa fa-arrow-left" onClick={this.props.handleActionViewBack} />;
     } else {
-      button = (
-        <IconButton
-          bezelStyle={"flat"}
-          icon="fa fa-times"
-          onClick={this.props.handleActionViewClose}
-        />
-      );
+      button = <IconButton bezelStyle={"flat"} icon="fa fa-times" onClick={this.props.handleActionViewClose} />;
     }
 
     return (
       <div style={this.styles.backButton}>
-        <div style={this.styles.backButtonContainers}>
-          {button}
-        </div>
+        <div style={this.styles.backButtonContainers}>{button}</div>
       </div>
     );
   }
@@ -290,7 +264,7 @@ class ActionView extends Component {
 
   get actionViewIsLargeSize() {
     const { meta } = this.props.actionView;
-    const dashboardSize = meta && meta.actionView && meta.actionView.dashboardSize || "sm";
+    const dashboardSize = (meta && meta.actionView && meta.actionView.dashboardSize) || "sm";
     const includesDashboard = this.props.actionView.provides && this.props.actionView.provides.includes("dashboard");
 
     return includesDashboard || dashboardSize !== "sm";
@@ -313,23 +287,13 @@ class ActionView extends Component {
       return (
         <div style={this.styles.backButton}>
           <div style={this.styles.backButtonContainers}>
-            <IconButton
-              bezelStyle={"flat"}
-              icon="fa fa-arrow-left"
-              onClick={this.props.handleActionViewDetailBack}
-            />
+            <IconButton bezelStyle={"flat"} icon="fa fa-arrow-left" onClick={this.props.handleActionViewDetailBack} />
           </div>
         </div>
       );
     }
 
-    return (
-      <IconButton
-        bezelStyle={"flat"}
-        icon="fa fa-times"
-        onClick={this.props.handleActionViewDetailClose}
-      />
-    );
+    return <IconButton bezelStyle={"flat"} icon="fa fa-times" onClick={this.props.handleActionViewDetailClose} />;
   }
 
   get styles() {
@@ -357,7 +321,6 @@ class ActionView extends Component {
         opaticy: 0
       },
       duration: 200
-
     };
   }
 
@@ -370,24 +333,16 @@ class ActionView extends Component {
           {this.renderBackButton()}
           <div style={this.styles.heading} className="heading">
             <h3 className="title" style={this.styles.title}>
-              <Translation
-                defaultValue={actionView.label || "Dashboard"}
-                i18nKey={actionView.i18nKeyLabel || "admin.dashboard.coreTitle"}
-              />
+              <Translation defaultValue={actionView.label || "Dashboard"} i18nKey={actionView.i18nKeyLabel || "admin.dashboard.coreTitle"} />
             </h3>
           </div>
 
-          <div className="controls»">
-            {/* Controls */}
-          </div>
+          <div className="controls»">{/* Controls */}</div>
         </div>
         <div style={this.styles.body} className="admin-controls-content action-view-body">
-
           {this.renderControlComponent()}
-
         </div>
       </div>
-
     );
   }
 
@@ -405,33 +360,23 @@ class ActionView extends Component {
       return (
         <div className={baseClassName} style={this.styles.detailViewPanel}>
           <div style={this.styles.header} className="header">
-            <VelocityTransitionGroup
-              enter={this.backButtonEnterAnimation}
-              leave={this.backButtonLeaveAnimaton}
-            >
+            <VelocityTransitionGroup enter={this.backButtonEnterAnimation} leave={this.backButtonLeaveAnimaton}>
               {this.renderDetailViewBackButton()}
             </VelocityTransitionGroup>
 
             <div style={this.styles.heading} className="heading">
               <h3 className="title" style={this.styles.title}>
-                <Translation
-                  defaultValue={actionView.label}
-                  i18nKey={actionView.i18nKeyLabel}
-                />
+                <Translation defaultValue={actionView.label} i18nKey={actionView.i18nKeyLabel} />
               </h3>
             </div>
 
-            <div className="controls">
-              {/* Controls */}
-            </div>
+            <div className="controls">{/* Controls */}</div>
           </div>
           <div style={this.styles.body} className="admin-controls-content action-view-body">
-
             {/* this.renderControlComponent() */}
             {this.renderDetailComponent()}
           </div>
         </div>
-
       );
     }
   }
@@ -448,24 +393,14 @@ class ActionView extends Component {
     if (this.props.actionViewIsOpen) {
       return (
         <div style={this.styles.base} className={baseClassName}>
-
           {this.renderMasterView()}
-          <Overlay
-            isVisible={this.showDetailViewOverlay}
-            onClick={this.props.handleActionViewDetailClose}
-          />
-          <VelocityTransitionGroup
-            enter={this.state.enterAnimationForDetailView}
-            leave={this.state.leaveAnimationForDetailView}
-          >
+          <Overlay isVisible={this.showDetailViewOverlay} onClick={this.props.handleActionViewDetailClose} />
+          <VelocityTransitionGroup enter={this.state.enterAnimationForDetailView} leave={this.state.leaveAnimationForDetailView}>
             {this.renderDetailView()}
           </VelocityTransitionGroup>
 
-
           <div className="admin-controls-footer">
-            <div className="admin-controls-container">
-              {this.renderFooter()}
-            </div>
+            <div className="admin-controls-container">{this.renderFooter()}</div>
           </div>
         </div>
       );
@@ -485,10 +420,7 @@ class ActionView extends Component {
           {this.renderActionView()}
         </VelocityTransitionGroup>
 
-        <Overlay
-          isVisible={this.showOverlay}
-          onClick={this.props.handleActionViewClose}
-        />
+        <Overlay isVisible={this.showOverlay} onClick={this.props.handleActionViewClose} />
       </div>
     );
   }

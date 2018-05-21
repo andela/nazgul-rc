@@ -157,6 +157,7 @@ Template.coreOrderShippingInvoice.events({
       let returnToStock;
       if (isConfirm) {
         returnToStock = false;
+        Meteor.call("orders/sendNotification", order, "cancelled");
         return Meteor.call("orders/cancelOrder", order, returnToStock, err => {
           if (err) {
             $(".alert").removeClass("hidden").text(err.message);
@@ -165,6 +166,7 @@ Template.coreOrderShippingInvoice.events({
       }
       if (cancel === "cancel") {
         returnToStock = true;
+        Meteor.call("orders/sendNotification", order, "cancelled");
         return Meteor.call("orders/cancelOrder", order, returnToStock, err => {
           if (err) {
             $(".alert").removeClass("hidden").text(err.message);

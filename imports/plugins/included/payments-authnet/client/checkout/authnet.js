@@ -41,6 +41,19 @@ Template.authnetPaymentForm.helpers({
   }
 });
 
+// disables payment form on load
+Template.authnetPaymentForm.rendered = function () {
+  $("#authnet").hide();
+};
+
+// toggle payment methods visibility
+Template.authnetPaymentForm.events({
+  "click .checkie": (event) => {
+    event.preventDefault();
+    $("#authnet").slideToggle(1000);
+  }
+});
+
 AutoForm.addHooks("authnet-payment-form", {
   onSubmit(doc) {
     // Process form (pre-validated by autoform)

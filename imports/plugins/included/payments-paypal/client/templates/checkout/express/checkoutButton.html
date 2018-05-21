@@ -4,7 +4,7 @@
       <div class="spinner"></div>
     </div>
   {{else}}
-    <div class="paypal-express">
+    <div>
       <div class="paypal-checkout-button-container {{#unless isConfigured}}hidden{{/unless}}">
         <button class="btn btn-block btn-info js-paypal-express-checkout"><i class="fa fa-paypal"></i>
           <span data-i18n="checkout.paymentMethod.expressButtonLabel">Checkout with PayPal Express</span>
@@ -18,10 +18,20 @@
           <span data-i18n="checkout.paymentMethod.expressNotConfigured">Paypal Express misconfigured.</span>
         </div>
         {{else}}
-        <div class="alert alert-warning">
-          <i class="fa fa-paypal"></i>
-          <span data-i18n="checkout.paymentMethod.expressNotAvailable">Paypal Express not available</span>
-        </div>
+          <div class="panel panel-default">
+            <div class="panel-heading panel-heading-flex checkie" type="button">
+              <div class="panel-title">
+                <i class="fa fa-credit-card-alt paddingR"></i>
+                <span>Pay With Paypal Express</span>
+              </div>
+            </div>
+            <div class="panel-body" id="paystackExpress">
+              <div class="alert alert-warning">
+                <i class="fa fa-paypal"></i>
+                <span data-i18n="checkout.paymentMethod.expressNotAvailable">Paypal Express not available</span>
+              </div>
+            </div>
+          </div>
         {{/if}}
       </div>
     </div>
