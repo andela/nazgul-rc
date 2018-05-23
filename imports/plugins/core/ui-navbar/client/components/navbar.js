@@ -119,12 +119,12 @@ class NavBar extends Component {
       </div>
     );
   }
-
   renderStaticPages() {
     return (
       <Components.StaticPagesComponent />
     );
   }
+
 
   renderTakeTourButton() {
     if (!Reaction.hasPermission("admin")) {

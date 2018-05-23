@@ -1,3 +1,4 @@
+/* global $ */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import debounce from "lodash/debounce";
@@ -40,6 +41,11 @@ export default class DiscountForm extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleClickForDiscountCodes = this.handleClickForDiscountCodes.bind(this);
+  }
+
+  componentDidMount() {
+    $("#discount-codes").hide();
   }
 
   componentWillUnmount() {
@@ -80,6 +86,11 @@ export default class DiscountForm extends Component {
   handleClick(event) {
     event.preventDefault();
     this.setState({ validatedInput: true });
+  }
+
+  handleClickForDiscountCodes(event) {
+    event.preventDefault();
+    $("#discount-codes").slideToggle(1000);
   }
 
   // loader button
@@ -129,9 +140,21 @@ export default class DiscountForm extends Component {
   // have a code link
   renderDiscountLink() {
     return (
-      <a onClick={this.handleClick}>
-        <Translation defaultValue="Have a code? Enter it here." i18nKey="discounts.enterItHere"/>
-      </a>
+      <div className="row">
+        <div className="panel panel-default">
+          <div className="panel-heading panel-heading-flex checkie" type="button" onClick={this.handleClickForDiscountCodes}>
+            <div className="panel-title">
+              <i className="fa fa-credit-card-alt paddingR"/>
+              <span>Pay With Discount Code</span>
+            </div>
+          </div>
+          <div className="panel-body" id="discount-codes" onClick={this.handleClick}>
+            <a onClick={this.handleClick}>
+              <Translation defaultValue="Have a code? Enter it here." i18nKey="discounts.enterItHere"/>
+            </a>
+          </div>
+        </div>
+      </div>
     );
   }
 

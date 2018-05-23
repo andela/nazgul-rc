@@ -18,6 +18,7 @@ module.exports = {
       .pause(3000)
       .click(".take-tour")
       .assert.containsText(".introjs-tooltiptext > h3", "Welcome to Reaction Commerce")
+      // close browser when simulation finishes
       .end();
   }
 };

@@ -75,6 +75,19 @@ Template.stripePaymentForm.helpers({
   }
 });
 
+// disables payment form on load
+Template.stripePaymentForm.rendered = function () {
+  $("#stripe").hide();
+};
+
+// toggle payment methods visibility
+Template.stripePaymentForm.events({
+  "click .checkie": (event) => {
+    event.preventDefault();
+    $("#stripe").slideToggle(1000);
+  }
+});
+
 // This creates an autorun block that monitors the CompletedCartOrder subscription
 // and once an order for the cart we're checking out with is available,
 // We trigger a Router.go to the cart/completed page.

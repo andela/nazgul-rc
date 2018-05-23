@@ -28,7 +28,7 @@ class SearchModal extends Component {
     this.state = {
       vendors: [],
       isFilterAction: false,
-      sortOrder: "asc",
+      sortOrder: "desc",
       sortType: "newest"
     };
   }
@@ -128,7 +128,7 @@ class SearchModal extends Component {
   renderFilter() {
     return (
       <div className="nazgul-rc-filter" style={{ display: "inline-block", margin: "10px" }}>
-        <span>Filter By</span>
+        <span style={{ color: "#fff" }}>Filter By</span>
         <select id="price" onChange={event => this.handleFilter(event, "price")} style={{ margin: "5px" }}>
           <option value="0">All Price</option>
           <option value="0-99">0 - &#x20a6;99</option>
@@ -159,8 +159,9 @@ class SearchModal extends Component {
 
     return (
       <div className="nazgul-rc-sort" style={{ display: "inline-block", margin: "10px" }}>
-        <span>Sort By</span>
+        <span style={{ color: "#fff" }}>Sort By</span>
         <select
+          id="sort-type"
           onChange={event => {
             this.setState({ sortType: event.target.value });
             this.handleSort(event.target.value, this.state.sortOrder);
@@ -172,11 +173,13 @@ class SearchModal extends Component {
           <option value="vendor">Vendor</option>
         </select>
         <select
+          id="sort-order"
           onChange={event => {
             this.setState({ sortOrder: event.target.value });
             this.handleSort(this.state.sortType, event.target.value);
           }}
           style={{ margin: "5px" }}
+          defaultValue="desc"
         >
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
@@ -197,9 +200,22 @@ class SearchModal extends Component {
           {this.props.tags.length > 0 && this.renderProductSearchTags()}
         </div>
         <div className="rui search-modal-results-container">
-          <div className="nazgul-sort-filter" style={{ fontSize: "2em", textAlign: "center" }}>
-            {this.renderFilter()}
-            {this.renderSort()}
+          <div
+            className="nazgul-sort-filter"
+            style={{
+              textAlign: "center",
+              position: "fixed",
+              zIndex: "999",
+              color: "#444",
+              fontSize: "15px",
+              width: "100%",
+              height: "10%"
+            }}
+          >
+            <div style={{ position: "relative", marginLeft: "20%", width: "60%", background: "#30556A", top: !this.props.tags.length ? "-85px" : "-20px" }}>
+              {this.renderFilter()}
+              {this.renderSort()}
+            </div>
           </div>
           {this.props.products.length > 0 && <ProductGridContainer products={this.props.products} unmountMe={this.props.unmountMe} isSearch={true} />}
           {this.props.accounts.length > 0 && (

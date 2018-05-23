@@ -17,6 +17,18 @@ Template.braintreePaymentForm.helpers({
   }
 });
 
+// disables payment form on load
+Template.braintreePaymentForm.rendered = function () {
+  $("#braintree").hide();
+};
+
+// toggle payment methods visibility
+Template.braintreePaymentForm.events({
+  "click .checkie": (event) => {
+    event.preventDefault();
+    $("#braintree").slideToggle(1000);
+  }
+});
 
 function uiEnd(template, buttonText) {
   template.$(":input").removeAttr("disabled");

@@ -13,10 +13,24 @@ class StaticPagesComponent extends Component {
 
   renderStaticPagesComponent() {
     const { pages } = this.props;
+    const pageItem = pages.map(page => {
+      return (
+        <div key={page._id} className="static-pages">
+          <a className="static-page-link" onClick={() => this.goToStaticPage(page)}>
+            {page.pageName}
+          </a>
+        </div>
+      );
+    });
+
+    if (pages.length < 3) {
+      return pageItem;
+    }
+
     return (
       <div className="static-pages dropdown" role="menu" data-delay="1000">
         <div className="dropdown-toggle" data-toggle="dropdown">
-          Page
+          Pages
           <span className="caret" />
         </div>
         <ul className="dropdown-menu">
@@ -35,11 +49,7 @@ class StaticPagesComponent extends Component {
   }
 
   render() {
-    return (
-      <div className="static-pages" role="menu">
-        {this.renderStaticPagesComponent()}
-      </div>
-    );
+    return <div className="static-flex">{this.renderStaticPagesComponent()}</div>;
   }
 }
 
