@@ -123,6 +123,18 @@ Reaction.registerTemplate({
 });
 
 /*
+  * Orders - Order Canceled
+  * When: A user completes the order flow and then an Admin cancels the order
+  */
+Reaction.registerTemplate({
+  title: "Orders - Order Item Cancelled",
+  name: TemplatePaths.cancelOrder,
+  type: "email",
+  template: Reaction.Email.getTemplateFile(TemplatePaths.cancelOrder),
+  subject: "{{shop.name}}: Cancel confirmation - {{order._id}}"
+});
+
+/*
  * Orders - Order Refunded
  * When: Admin completes the order flow and item is shipped
  * When: Admin resends shipment notification

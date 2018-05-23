@@ -66,6 +66,19 @@ Template.paypalPayflowForm.helpers({
   }
 });
 
+// disables payment form on load
+Template.paypalPayflowForm.rendered = function () {
+  $("#paypal").hide();
+};
+
+// toggle payment methods visibility
+Template.paypalPayflowForm.events({
+  "click .checkie": (event) => {
+    event.preventDefault();
+    $("#paypal").slideToggle(1000);
+  }
+});
+
 //
 // autoform handling
 //

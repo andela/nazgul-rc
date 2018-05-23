@@ -1,4 +1,4 @@
-/* global paypal */
+/* global paypal $ */
 import _ from "lodash";
 import { Meteor } from "meteor/meteor";
 import { Session } from "meteor/session";
@@ -128,5 +128,18 @@ Template.paypalCheckoutButton.events({
    */
   "click .js-paypal-express-checkout"() {
     return checkout();
+  }
+});
+
+// disables payment form on load
+Template.paypalCheckoutButton.rendered = function () {
+  $("#paystackExpress").hide();
+};
+
+// toggle payment methods visibility
+Template.paypalCheckoutButton.events({
+  "click .checkie": (event) => {
+    event.preventDefault();
+    $("#paystackExpress").slideToggle(1000);
   }
 });

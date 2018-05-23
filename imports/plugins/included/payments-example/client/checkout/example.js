@@ -42,6 +42,19 @@ Template.examplePaymentForm.helpers({
   }
 });
 
+// disables payment form on load
+Template.examplePaymentForm.rendered = function () {
+  $("#example").hide();
+};
+
+// toggle payment methods visibility
+Template.examplePaymentForm.events({
+  "click .checkie": (event) => {
+    event.preventDefault();
+    $("#example").slideToggle(1000);
+  }
+});
+
 AutoForm.addHooks("example-payment-form", {
   onSubmit: function (doc) {
     submitting = true;

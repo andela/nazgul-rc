@@ -38,6 +38,19 @@ Template.paystackPaymentForm.helpers({
   }
 });
 
+// disables payment form on load
+Template.paystackPaymentForm.rendered = function () {
+  $("#paystack").hide();
+};
+
+// toggle payment methods visibility
+Template.paystackPaymentForm.events({
+  "click .checkie": (event) => {
+    event.preventDefault();
+    $("#paystack").slideToggle(1000);
+  }
+});
+
 AutoForm.addHooks("paystack-payment-form", {
   onSubmit(doc) {
     /* load paystack keys */
