@@ -6,12 +6,35 @@
   color: black;
 }
 
+a.rui.tag.link:hover {
+  background-color:rgba(0,0,0,0.1) !important;
+  color: white !important
+}
+.bell-nav:hover{
+  color: #000
+}
 .admin-control-quicklinks {
   color: #fff;
 }
 
-.fa-search {
-  color: white;
+.search:hover {
+  color: black;
+}
+
+.rui.toolbar.toolbar-vertical.admin-shortcut-bar .fa {
+  color: #fff;
+}
+
+.fa-search, .fa-language, .fa-caret-down, .fa-bell {
+  color: #fff;
+}
+
+.rui.panel-body.no-padding .fa {
+  color: #000;
+}
+
+.fa-bell:hover {
+  color: #000;
 }
 
 html.rtl .rui.admin.action-view {
@@ -116,6 +139,18 @@ html:not(.rtl) .rui.admin.action-view {
     font-size: 3.2rem;
 }
 
+.search-e:hover, .notification-icon:hover, .currency-e:hover, .language-e:hover, .accounts:hover, .navbar-item:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.bell-nav:hover {
+  color: #fff !important;
+}
+
+.fa-bell:hover {
+  color: #fff !important;
+}
+
 .admin-shortcut-bar nav .btn.active {
   color: @component-active-color;
   background-color: @component-active-bg;
@@ -145,6 +180,10 @@ html:not(.rtl) .rui.admin.action-view {
   //   min-width: 44px;
   //   min-height: 44px;
   // }
+}
+
+.control-label {
+  color: #46B29D
 }
 
 .admin-shortcut-bar hr {

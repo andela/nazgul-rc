@@ -46,7 +46,7 @@ class NavBar extends Component {
 
   renderLanguage() {
     return (
-      <div className="languages hidden-xs">
+      <div className="languages hidden-xs language-e">
         <Components.LanguageDropdown />
       </div>
     );
@@ -54,7 +54,7 @@ class NavBar extends Component {
 
   renderCurrency() {
     return (
-      <div className="currencies hidden-xs">
+      <div className="currencies hidden-xs currency-e">
         <Components.CurrencyDropdown />
       </div>
     );
@@ -75,7 +75,7 @@ class NavBar extends Component {
   renderSearchButton() {
     if (this.props.searchEnabled) {
       return (
-        <div className="search">
+        <div className="search search-e">
           <Components.FlatButton
             icon="fa fa-search"
             kind="flat"
@@ -89,7 +89,9 @@ class NavBar extends Component {
   renderNotificationIcon() {
     if (this.props.hasProperPermission) {
       return (
-        <Components.Notification />
+        <div className="notification-e">
+          <Components.Notification />
+        </div>
       );
     }
   }
@@ -115,7 +117,7 @@ class NavBar extends Component {
 
   renderHamburgerButton() {
     return (
-      <div className="showmenu"><Components.Button icon="bars" onClick={this.toggleNavbarVisibility} /></div>
+      <div className="showmenu showmenu-e"><Components.Button icon="bars" onClick={this.toggleNavbarVisibility} /></div>
     );
   }
 
