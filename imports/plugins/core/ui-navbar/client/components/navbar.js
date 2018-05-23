@@ -99,7 +99,7 @@ class NavBar extends Component {
 
   startOnboarding(e) {
     e.preventDefault();
-    let windowPage = Router.current().route.path.indexOf("/tag/");
+    const windowPage = Router.current().route.path.indexOf("/tag/");
     if (windowPage !== 0) {
       Router.go("/tag/shop");
     }
