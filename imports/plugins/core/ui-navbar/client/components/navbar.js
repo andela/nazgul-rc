@@ -33,7 +33,7 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.startOnboarding = this.startOnboarding.bind(this);
-}
+  }
 
   state = {
     navBarVisible: false
@@ -91,7 +91,8 @@ class NavBar extends Component {
         <div className="takeTour search">
           <button onClick={this.startOnboarding} className="rui btn btn-default flat button" type="button" kind="flat">
             Take a Tour
-          </button></div>
+          </button>
+        </div>
       );
     }
   }
@@ -99,10 +100,10 @@ class NavBar extends Component {
   startOnboarding(e) {
     e.preventDefault();
     let windowPage = Router.current().route.path.indexOf("/tag/");
-    if ( windowPage !== 0 ) {
-      Router.go('/tag/shop');
+    if (windowPage !== 0) {
+      Router.go("/tag/shop");
     }
-    if (Router.current().route.path === '/tag/shop') {
+    if (Router.current().route.path === "/tag/shop") {
       setTimeout(() => {
         onboarding.initManualTour();
       }, 1000);
@@ -150,11 +151,8 @@ class NavBar extends Component {
     );
   }
   renderStaticPages() {
-    return (
-      <Components.StaticPagesComponent />
-    );
+    return <Components.StaticPagesComponent />;
   }
-
 
   renderTakeTourButton() {
     if (!Reaction.hasPermission("admin")) {

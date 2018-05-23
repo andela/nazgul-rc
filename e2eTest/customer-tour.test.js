@@ -13,7 +13,7 @@ module.exports = {
       .pause(3000)
 
       // take tour button should not be visble for non-product page
-      .assert.cssClassNotPresent('.rui.navbar', '.takeTour.search')
+      .assert.cssClassNotPresent(".rui.navbar", ".takeTour.search")
       .end();
   },
   "Customer(s) should now see take tour button on shop page": browser => {
@@ -27,13 +27,16 @@ module.exports = {
       .pause(1000)
 
       // take tour button should be visble on product page
-      .assert.elementPresent('.takeTour.search')
+      .assert.elementPresent(".takeTour.search")
 
       // customer(s) should be able to see intro tour when 'Take a Tour button is clicked' "
-      .click('.takeTour.search > .rui.btn.btn-default.flat.button')
+      .click(".takeTour.search > .rui.btn.btn-default.flat.button")
       .pause(2000)
-      .assert.visible('.introjs-tooltip.introjs-floating')
-      .assert.containsText('.introjs-tooltip.introjs-floating > .introjs-tooltiptext > h2', 'Welcome to Reaction Commerce')
+      .assert.visible(".introjs-tooltip.introjs-floating")
+      .assert.containsText(
+        ".introjs-tooltip.introjs-floating > .introjs-tooltiptext > h2",
+        "Welcome to Reaction Commerce"
+      )
 
       // close browser when simulation finishes
       .end();

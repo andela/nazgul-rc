@@ -14,13 +14,11 @@ intro.setOptions({
 });
 
 const initAutoTour = () => {
-  const isVendor = Reaction.hasPermission("seller") || Reaction.hasPermission("owner");;
+  const isVendor = Reaction.hasPermission("seller") || Reaction.hasPermission("owner");
   const user = Collections.Accounts.findOne({ userId: Meteor.userId() }).fetch();
   if (user.hasTakenTour === false && isVendor) {
     intro.start();
-    Collections.Accounts.update(user._id,
-      { $set: { hasTakenTour: true } }
-    );
+    Collections.Accounts.update(user._id, { $set: { hasTakenTour: true } });
   }
 };
 

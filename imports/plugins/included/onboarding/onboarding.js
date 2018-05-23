@@ -25,13 +25,9 @@ const initAutoTour = () => {
     setTimeout(() => {
       userIntro.start();
     }, 5000);
-    Collections.Accounts.update(user._id,
-      { $set: { hasTakenTour: true } }
-    );
+    Collections.Accounts.update(user._id, { $set: { hasTakenTour: true } });
   }
-  Collections.Accounts.update(user._id,
-    { $set: { hasTakenTour: true } }
-  );
+  Collections.Accounts.update(user._id, { $set: { hasTakenTour: true } });
 };
 
 const initManualTour = () => {
