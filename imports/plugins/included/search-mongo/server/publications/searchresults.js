@@ -11,8 +11,15 @@ const supportedCollections = ["products", "orders", "accounts"];
 function getProductFindTerm(searchTerm, searchTags, userId) {
   const shopId = Reaction.getShopId();
   const findTerm = {
-    shopId: shopId,
-    $text: { $search: searchTerm }
+    $and: [
+      { shopId: shopId },
+      {
+        title: {
+          $regex: searchTerm,
+          $options: "i"
+        }
+      }
+    ]
   };
   if (searchTags.length) {
     findTerm.hashtags = { $all: searchTags };
@@ -39,7 +46,8 @@ getResults.products = function (searchTerm, facets, maxResults, userId) {
       isSoldOut: 1,
       isLowQuantity: 1,
       isBackorder: 1,
-      vendor: 1
+      vendor: 1,
+      createdAt: 1
     },
     sort: { score: { $meta: "textScore" } },
     limit: maxResults

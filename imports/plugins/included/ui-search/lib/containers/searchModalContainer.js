@@ -21,7 +21,10 @@ const wrapComponent = Comp =>
         value: localStorage.getItem("searchValue") || "",
         renderChild: true,
         facets: [],
-        filterKey: {}
+        filterKey: {},
+        sortKey: {
+          createdAt: -1
+        }
       };
     }
 
@@ -43,17 +46,17 @@ const wrapComponent = Comp =>
 
     setPriceFilter(price) {
       if (price === "0") {
-        const { price, ...state } = this.state.filterKey;
-        return this.setState({ filterKey: state });
+        const filterKey = { ...this.state.filterKey };
+        Reflect.deleteProperty(filterKey, "price.min");
+        Reflect.deleteProperty(filterKey, "price.max");
+        return this.setState({ filterKey });
       }
       const minMaxPrice = price.split("-");
       this.setState({
         filterKey: {
           ...this.state.filterKey,
-          price: {
-            "price.min": minMaxPrice[0],
-            "price.max": minMaxPrice[1]
-          }
+          "price.min": { $gte: parseInt(minMaxPrice[0], 10) },
+          "price.max": { $lte: parseInt(minMaxPrice[1], 10) }
         }
       });
     }
@@ -75,10 +78,17 @@ const wrapComponent = Comp =>
       if (type === "vendor") this.setVendorFilter(event.target.value);
     };
 
+    handleSort = (field, order) => {
+      const sortOrder = order === "asc" ? 1 : -1;
+      if (field === "newest") return this.setState({ sortKey: { createdAt: sortOrder } });
+      if (field === "vendor") return this.setState({ sortKey: { vendor: sortOrder } });
+      if (field === "price") return this.setState({ sortKey: { "price.min": sortOrder } });
+    };
+
     handleChange = (event, value) => {
       localStorage.setItem("searchValue", value);
 
-      this.setState({ value });
+      this.setState({ filterKey: {}, value });
     };
 
     handleClick = () => {
@@ -121,11 +131,13 @@ const wrapComponent = Comp =>
                 handleAccountClick={this.handleAccountClick}
                 handleTagClick={this.handleTagClick}
                 handleFilter={this.handleFilter}
+                handleSort={this.handleSort}
                 value={this.state.value}
                 unmountMe={this.handleChildUnmount}
                 searchCollection={this.state.collection}
                 facets={this.state.facets}
                 filterKey={this.state.filterKey}
+                sortKey={this.state.sortKey}
               />
             </div>
           ) : null}

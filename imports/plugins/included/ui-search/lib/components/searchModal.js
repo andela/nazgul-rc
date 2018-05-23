@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Reaction } from "/client/api";
 import _ from "lodash";
-import * as Collections from "/lib/collections";
+import { ProductSearch } from "/lib/collections";
 import { TextField, Button, IconButton, SortableTableLegacy } from "@reactioncommerce/reaction-ui";
 import ProductGridContainer from "/imports/plugins/included/product-variant/containers/productGridContainer";
 import { accountsTable } from "../helpers";
@@ -23,6 +23,34 @@ class SearchModal extends Component {
     unmountMe: PropTypes.func,
     value: PropTypes.string
   };
+  constructor(props) {
+    super(props);
+    this.state = {
+      vendors: [],
+      isFilterAction: false,
+      sortOrder: "asc",
+      sortType: "newest"
+    };
+  }
+
+  componentWillMount() {
+    let vendors = [];
+    this.props.products.forEach(product => vendors.push(product.vendor));
+    vendors = _.uniq(vendors);
+    return this.setState({ vendors });
+  }
+
+  componentWillReceiveProps(props) {
+    if (localStorage.getItem("FilterAction")) {
+      localStorage.removeItem("FilterAction");
+      return;
+    }
+
+    let vendors = [];
+    props.products.forEach(product => vendors.push(product.vendor));
+    vendors = _.uniq(vendors);
+    return this.setState({ vendors });
+  }
 
   renderSearchInput() {
     return (
@@ -86,6 +114,11 @@ class SearchModal extends Component {
       </div>
     );
   }
+
+  handleFilter(event, type) {
+    localStorage.setItem("FilterAction", true);
+    this.props.handleFilter(event, type);
+  }
   /**
    * Renders Filter component
    *
@@ -93,25 +126,26 @@ class SearchModal extends Component {
    * @memberof SearchModal
    */
   renderFilter() {
-    let vendors = [];
-    this.props.products.forEach(product => vendors.push(product.vendor));
-    vendors = _.uniq(vendors);
-
     return (
       <div className="nazgul-rc-filter" style={{ display: "inline-block", margin: "10px" }}>
         <span>Filter By</span>
-        <select onChange={event => this.props.handleFilter(event, "price")} style={{ margin: "5px" }}>
-          <option value="0">Price</option>
+        <select id="price" onChange={event => this.handleFilter(event, "price")} style={{ margin: "5px" }}>
+          <option value="0">All Price</option>
           <option value="0-99">0 - &#x20a6;99</option>
           <option value="100-999">&#x20a6;100 - &#x20a6;999</option>
           <option value="1000-9999">&#x20a6;1000 - &#x20a6;9999</option>
+          <option value="10000-99999">&#x20a6;10000 - &#x20a6;99999</option>
+          <option value="100000-999999">&#x20a6;100000 - &#x20a6;999999</option>
         </select>
-        <select onChange={event => this.props.handleFilter(event, "vendor")} style={{ margin: "5px" }}>
+        <select id="vendor" onChange={event => this.handleFilter(event, "vendor")} style={{ margin: "5px" }}>
           <option value="0">All Vendors</option>
-          {vendors.map(vendor => <option value={vendor}>{vendor}</option>)}
+          {this.state.vendors.map(vendor => <option value={vendor}>{vendor}</option>)}
         </select>
       </div>
     );
+  }
+  handleSort(sortType, sortOrder) {
+    this.props.handleSort(sortType, sortOrder);
   }
 
   /**
@@ -126,8 +160,26 @@ class SearchModal extends Component {
     return (
       <div className="nazgul-rc-sort" style={{ display: "inline-block", margin: "10px" }}>
         <span>Sort By</span>
-        <select onChange={event => this.props.handleFilter(event, "price")} style={{ margin: "5px" }}>
-          <option value="0">Price</option>
+        <select
+          onChange={event => {
+            this.setState({ sortType: event.target.value });
+            this.handleSort(event.target.value, this.state.sortOrder);
+          }}
+          style={{ margin: "5px" }}
+        >
+          <option value="newest">Newest Product</option>
+          <option value="price">Price</option>
+          <option value="vendor">Vendor</option>
+        </select>
+        <select
+          onChange={event => {
+            this.setState({ sortOrder: event.target.value });
+            this.handleSort(this.state.sortType, event.target.value);
+          }}
+          style={{ margin: "5px" }}
+        >
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
         </select>
       </div>
     );
@@ -145,7 +197,7 @@ class SearchModal extends Component {
           {this.props.tags.length > 0 && this.renderProductSearchTags()}
         </div>
         <div className="rui search-modal-results-container">
-          <div className="nazgul-sort-filter" style={{ fontSize: "2em" }}>
+          <div className="nazgul-sort-filter" style={{ fontSize: "2em", textAlign: "center" }}>
             {this.renderFilter()}
             {this.renderSort()}
           </div>
