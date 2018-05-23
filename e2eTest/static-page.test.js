@@ -25,7 +25,9 @@ module.exports = {
       // click the static icon button to open create page modal
       .click(".rui.btn.btn-default.flat.nazgul-for-all-1")
 
+      .pause(2000)
       // open create page modal
+      // .waitForElementVisible(".rmq-459cc65c.rui.admin.action-view-pane.action-view.open", 3000)
       .assert.visible(".rmq-459cc65c.rui.admin.action-view-pane.action-view.open")
       .assert.containsText(
         ".rmq-459cc65c.rui.admin.action-view-pane.action-view.open .heading h3 span",
