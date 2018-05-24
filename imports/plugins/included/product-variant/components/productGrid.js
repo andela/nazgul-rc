@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Reaction } from "/client/api";
 import { Components } from "@reactioncommerce/reaction-components";
 import startTour from "../../adminTour";
+import onboarding from "../../onboarding/onboarding";
 
 class ProductGrid extends Component {
   static propTypes = {
@@ -9,6 +11,9 @@ class ProductGrid extends Component {
   };
 
   componentDidMount() {
+    if (!Reaction.hasPermission("admin")) {
+      onboarding.initAutoTour();
+    }
     startTour();
   }
 
