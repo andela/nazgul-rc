@@ -144,6 +144,7 @@ class NavBar extends Component {
           onClick={event => {
             startTour(event);
           }}
+          className="take-tour-span"
         />
       </div>
     );

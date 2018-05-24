@@ -17,8 +17,9 @@ class AddToCartButton extends Component {
     if (this.hasVariants) {
       return (
         <div className="pdp add-to-cart">
+          <label>Select quantity:</label>
           <input
-            className="form-control input-md"
+            className="form-control input-md quantity-e"
             id="add-to-cart-quantity"
             min="1"
             name="addToCartQty"
