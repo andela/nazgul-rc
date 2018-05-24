@@ -35,8 +35,8 @@ const steps = [
     intro: `<h2>Your Account</h2>
     <hr>
     <div class="tourcontainer">
-      This holds Everything related to your account like
-      Signing up, signing in, user profile and your wallet.
+      This holds everything related to your account like
+      signing up, signing in, user profile and your wallet.
     </div>`
   },
   {
@@ -52,7 +52,7 @@ const steps = [
     intro: `<h2>Our shop</h2>
     <hr>
     <div class="tourcontainer">
-      This is where the shop you are on is displayed
+      This is where the shop you are on is displayed.
     </div>`
   },
   {
@@ -68,7 +68,7 @@ const steps = [
     intro: `<h2>Tour</h2>
     <hr>
     <div class="tourcontainer">
-      This is the end of the tour
+      This is the end of the tour,
       You can go back and forth or start this tour from the homepage by clicking the 'Take a tour' button.
     </div>`
   }
