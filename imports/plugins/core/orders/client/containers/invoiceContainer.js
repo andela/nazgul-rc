@@ -620,7 +620,7 @@ const composer = (props, onData) => {
   const paymentApproved = orderStatus === "approved";
   const showAfterPaymentCaptured = orderStatus === "completed";
   const paymentCaptured = _.includes(["completed", "refunded", "partialRefund"], orderStatus);
-  const paymentPendingApproval = _.includes(["created", "adjustments", "error"], orderStatus);
+  const paymentPendingApproval = _.includes(["created", "adjustments", "success", "error"], orderStatus);
 
   // get whether adjustments can be made
   const canMakeAdjustments =  !_.includes(["approved", "completed", "refunded", "partialRefund"], orderStatus);

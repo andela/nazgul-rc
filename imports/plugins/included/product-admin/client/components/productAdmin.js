@@ -279,6 +279,8 @@ class ProductAdmin extends Component {
               onReturnKeyDown={this.handleFieldBlur}
               placeholder="Subtitle"
               ref="subtitleInput"
+              id="nazgulProductTitle"
+              className="nazgulProductTitle"
               value={this.product.pageTitle}
             />
             <Components.TextField

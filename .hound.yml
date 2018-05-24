@@ -1,4 +1,8 @@
 eslint:
   enabled: true
+<<<<<<< HEAD
   config_file: .eslintrc.json
+=======
+  config_file: .eslintrc
+>>>>>>> 2f2c470b31985b67d7a13415c6eb679756a972cc
   ignore_file: .eslintignore
