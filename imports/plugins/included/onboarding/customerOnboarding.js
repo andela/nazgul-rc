@@ -68,7 +68,7 @@ const steps = [
     intro: `<h2>Tour</h2>
     <hr>
     <div class="tourcontainer">
-      This is the end of the tour,
+      This is the end of the tour.
       You can go back and forth or start this tour from the homepage by clicking the 'Take a tour' button.
     </div>`
   }
