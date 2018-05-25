@@ -17,17 +17,21 @@ class AddToCartButton extends Component {
     if (this.hasVariants) {
       return (
         <div className="pdp add-to-cart">
-          <label>Select quantity:</label>
-          <input
-            className="form-control input-md quantity-e"
-            id="add-to-cart-quantity"
-            min="1"
-            name="addToCartQty"
-            onChange={this.handleCartQuantityChange}
-            type="number"
-            value={this.props.cartQuantity}
-            placeholder="Qty"
-          />
+          <form className="form-inline">
+            <div>
+              <label>Select quantity:</label>
+              <input
+                className="form-control input-md quantity-e"
+                id="add-to-cart-quantity"
+                min="1"
+                name="addToCartQty"
+                onChange={this.handleCartQuantityChange}
+                type="number"
+                value={this.props.cartQuantity}
+                placeholder="Qty"
+              />
+            </div>
+          </form>
           <button
             className="input-group-addon add-to-cart-text js-add-to-cart"
             data-i18n="productDetail.addToCart"
