@@ -8,7 +8,6 @@ Reaction.registerPackage({
     {
       route: "/pages/:pageAddress",
       name: "pages",
-      permissions: ["admin", "guest", "anonymous"],
       audience: ["anonymous", "guest"],
       workflow: "coreStaticPagesWorkflow",
       template: "staticPageView"

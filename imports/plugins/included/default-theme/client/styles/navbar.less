@@ -77,7 +77,7 @@
 }
 
 .rui.navbar .dropdown a {
-  color: @link-color;
+  color: black;
 }
 
 .rui.navbar .dropdown .dropdown-menu > .active > a{
@@ -94,6 +94,15 @@
   height: 100%;
 
   padding: 0 14px;
+}
+
+.menu-item:hover {
+  color: black;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.currencies {
+  color: #fff;
 }
 
 .rui.navbar .languages,
@@ -254,10 +263,6 @@ html:not(.rtl) .rui.navbar .languages .dropdown-menu {
   color: @brand-vivid-color;
   text-decoration: none;
   background-color: transparent;
-}
-
-.rui.btn-default.flat:hover {
-  color: #46B29D;
 }
 
 .languages.hidden-xs {

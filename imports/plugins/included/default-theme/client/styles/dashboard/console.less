@@ -6,12 +6,35 @@
   color: black;
 }
 
+a.rui.tag.link:hover {
+  background-color:rgba(0,0,0,0.1) !important;
+  color: white !important
+}
+.bell-nav:hover{
+  color: #000
+}
 .admin-control-quicklinks {
   color: #fff;
 }
 
-.fa-search {
-  color: white;
+.search:hover {
+  color: black;
+}
+
+.rui.toolbar.toolbar-vertical.admin-shortcut-bar .fa {
+  color: #fff;
+}
+
+.fa-search, .fa-language, .fa-caret-down, .fa-bell {
+  color: #fff;
+}
+
+.rui.panel-body.no-padding .fa {
+  color: #000;
+}
+
+.fa-bell:hover {
+  color: #000;
 }
 
 html.rtl .rui.admin.action-view {
@@ -116,6 +139,22 @@ html:not(.rtl) .rui.admin.action-view {
     font-size: 3.2rem;
 }
 
+.search-e:hover, .notification-icon:hover, .currency-e:hover, .language-e:hover, .accounts:hover, .navbar-item:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.currency-e:focus {
+  color: white;
+}
+
+.bell-nav:hover {
+  color: #fff !important;
+}
+
+.fa-bell:hover {
+  color: #fff !important;
+}
+
 .admin-shortcut-bar nav .btn.active {
   color: @component-active-color;
   background-color: @component-active-bg;
@@ -145,6 +184,10 @@ html:not(.rtl) .rui.admin.action-view {
   //   min-width: 44px;
   //   min-height: 44px;
   // }
+}
+
+.control-label {
+  color: #46B29D
 }
 
 .admin-shortcut-bar hr {
@@ -275,6 +318,29 @@ body.admin-vertical .admin-controls {
   border-left: 0;
   border-right: 0;
   border-bottom: 0;
+}
+
+button.rui.btn.btn-default.flat.take-tour-span {
+  color: #fff;
+}
+
+.take-tour {
+  color: #fff;
+}
+
+.pdp.add-to-cart input {
+  width: 78% !important;
+  background-color: #fff !important;
+  color: #46B29D !important;
+  border: 1px solid #46B29D !important;
+  margin-left: 22px !important;
+  font-size: 1.8em !important;
+  margin-bottom: 10px;
+}
+
+.take-tour:hover {
+  background-color: rgba(0,0,0,0.1);
+  height: 100%;
 }
 
 .rui.admin.action-view-pane .panel-group > .panel:first-child {
