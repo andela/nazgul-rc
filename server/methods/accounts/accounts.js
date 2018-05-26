@@ -1022,6 +1022,101 @@ export function createFallbackLoginToken() {
   }
 }
 
+/* All about Wallet */
+
+/**
+ * @summary Ensures that the amount to be added/deducted from the wallet is of the right type.
+ * @returns boolean
+ */
+const validAmountCheck = Match.Where((amount) => !isNaN(amount) && amount > 0);
+const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const validEmailCheck = Match.Where((email) => regex.test(String(email).toLowerCase()));
+
+/**
+ * @name accounts/getWalletBallance
+ * @memberof Methods/Accounts
+ * @method
+ * @summary Retrieves the wallet value from the database as balance
+ * @returns {Number} - returns the value of the wallet as balance.
+ */
+export const getWalletBalance = () => {
+  const user = Meteor.user();
+  const account = Accounts.findOne({ _id: user._id });
+  const walletBalance = account.wallet;
+  return walletBalance;
+};
+
+// +  "wallet/update-balance": async function (transaction) {
+//   +    check(transaction, Object);
+//   +    const {
+//   +      amount,
+//   +      to,
+//   +      from,
+//   +      transactionType
+//   +    } = transaction;
+//   +
+//   +    const updateBalance = (currentBalance, updateAmount, ownerEmail) => {
+//   +      Wallets.update({ ownerEmail }, {
+//   +        $set: {
+//   +          balance: currentBalance + updateAmount
+//   +        }
+//   +      });
+//   +    };
+/**
+ * @name accounts/fundWallet
+ * @memberof Methods/Accounts
+ * @method
+ * @summary Adds more fund to the wallet.
+ * @returns {Boolean} - returns boolean.
+ */
+export const fundWallet = (amount, userId) => {
+  check(amount, validAmountCheck);
+  const user = Meteor.user();
+  Accounts.update({
+    userId: user._id
+  }, {
+    $inc: {
+      wallet: amount
+    }
+  });
+  return true;
+};
+// /**
+//  * @name accounts/walletBalance
+//  * @memberof Methods/Accounts
+//  * @method
+//  * @summary Retrieves the wallet value from the database as balance
+//  * @returns {Number} - returns the value of the wallet as balance.
+//  */
+// export const getWalletValue = () => {
+//   const user = Meteor.user();
+//   const account = Accounts.findOne({ _id: user._id });
+//   const walletBalance = account.wallet;
+//   return walletBalance;
+// };
+
+/**
+ * @name accounts/deductFromWallet
+ * @memberof Methods/Accounts
+ * @method
+ * @summary Deducts fund from the wallet.
+ * @returns {Boolean} - returns boolean.
+ */
+export const deductFromWallet = (amount) => {
+  check(amount, validAmountCheck);
+  const user = Meteor.user();
+  const walletBalance = Accounts.findOne({ _id: user._id }).wallet;
+  const newBalance = walletBalance - amount;
+  Accounts.update({
+    _id: user._id
+  }, {
+    $set: {
+      wallet: newBalance
+    }
+  });
+  return true;
+};
+
 Meteor.methods({
   "accounts/verifyAccount": verifyAccount,
   "accounts/validateAddress": validateAddress,
@@ -1037,5 +1132,9 @@ Meteor.methods({
   "accounts/setUserPermissions": setUserPermissions,
   "accounts/createFallbackLoginToken": createFallbackLoginToken,
   "accounts/updateEmailAddress": updateEmailAddress,
-  "accounts/removeEmailAddress": removeEmailAddress
+  "accounts/removeEmailAddress": removeEmailAddress,
+  "accounts/getWalletBalance": getWalletBalance,
+  "accounts/fundWallet": fundWallet,
+  "accounts/deductFromWallet": deductFromWallet
+
 });
