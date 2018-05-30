@@ -22,8 +22,8 @@ export function getTwitterMeta(props) {
   if (props.media) {
     let media;
 
-    if (!/^http(s?):\/\/+/.test(props.media)) {
-      media = location.origin + props.media;
+    if (!/^http(s?):\/\/+/.test(props.settings.media)) {
+      media = location.origin + props.settings.media;
     }
 
     meta.push({
