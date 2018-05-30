@@ -11,6 +11,8 @@ export function getOpenGraphMeta(props) {
   const title = props.title || document.title;
   const description = props.settings.description;
 
+  console.log("the props images from the component>>>", props.media);
+
   const meta = [
     { property: "og:type", content: "article" },
     { property: "og:site_name", content: location.hostname },
@@ -18,7 +20,6 @@ export function getOpenGraphMeta(props) {
     { property: "og:title", content: title },
     { property: "og:description", content: description }
   ];
-
 
   if (props.media) {
     let media;
@@ -61,7 +62,7 @@ class FacebookSocialButton extends Component {
     }
   }
 
-  handleClick = (event) => {
+  handleClick = event => {
     event.preventDefault();
 
     if (window.FB) {
@@ -71,13 +72,11 @@ class FacebookSocialButton extends Component {
         href: this.props.url
       });
     }
-  }
+  };
 
   renderText() {
     if (this.props.showText) {
-      return (
-        <Translation defaultValue="Share on Facebook" i18nKey="social.shareOnFacebook" />
-      );
+      return <Translation defaultValue="Share on Facebook" i18nKey="social.shareOnFacebook" />;
     }
 
     return null;
@@ -86,8 +85,8 @@ class FacebookSocialButton extends Component {
   render() {
     const iconClassNames = classnames({
       "fa": true,
-      "fa-facebook": this.props.altIcon !== true,
-      "fa-facebook-alt": this.props.altIcon,
+      "fa-facebook fa-2x": this.props.altIcon !== true,
+      "fa-facebook-alt fa-2x": this.props.altIcon,
       [this.props.size]: this.props.size
     });
 
@@ -95,9 +94,7 @@ class FacebookSocialButton extends Component {
       <a className="btn btn-flat facebook-share" aria-label="Share to Facebook" href="#" onClick={this.handleClick}
         target="_blank"
       >
-        <Helmet
-          meta={getOpenGraphMeta(this.props)}
-        />
+        <Helmet meta={getOpenGraphMeta(this.props)} />
         <i className={iconClassNames} />
         {this.renderText()}
       </a>

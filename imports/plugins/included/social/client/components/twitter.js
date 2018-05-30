@@ -4,7 +4,6 @@ import Helmet from "react-helmet";
 import classnames from "classnames";
 import { Translation } from "/imports/plugins/core/ui/client/components";
 
-
 export function getTwitterMeta(props) {
   const title = props.title || document.title;
   const preferredUrl = props.url || location.origin + location.pathname;
@@ -35,13 +34,13 @@ export function getTwitterMeta(props) {
 }
 
 class TwitterSocialButton extends Component {
-  handleClick = (event) => {
+  handleClick = event => {
     event.preventDefault();
 
     if (window) {
       window.open(this.url, "twitter_window", "width=750, height=650");
     }
-  }
+  };
 
   get url() {
     const props = this.props;
@@ -62,9 +61,7 @@ class TwitterSocialButton extends Component {
 
   renderText() {
     if (this.props.showText) {
-      return (
-        <Translation defaultValue="Share on Twitter" i18nKey="social.shareOnTwitter" />
-      );
+      return <Translation defaultValue="Share on Twitter" i18nKey="social.shareOnTwitter" />;
     }
     return null;
   }
@@ -72,8 +69,8 @@ class TwitterSocialButton extends Component {
   render() {
     const iconClassNames = classnames({
       "fa": true,
-      "fa-twitter": this.props.altIcon !== true,
-      "fa-twitter-alt": this.props.altIcon,
+      "fa-twitter fa-2x": this.props.altIcon !== true,
+      "fa-twitter-alt fa-2x": this.props.altIcon,
       [this.props.size]: this.props.size
     });
 
@@ -81,9 +78,7 @@ class TwitterSocialButton extends Component {
       <a className="btn btn-flat twitter-share" aria-label="Share to Twitter" href="#" onClick={this.handleClick}
         target="_blank"
       >
-        <Helmet
-          meta={getTwitterMeta(this.props)}
-        />
+        <Helmet meta={getTwitterMeta(this.props)} />
         <i className={iconClassNames} />
         {this.renderText()}
       </a>
