@@ -32,7 +32,9 @@ module.exports = {
       .click(".core-payment-method-form:nth-of-type(2)")
       .waitForElementVisible("#completeWalletOrder", 15000)
       .click("#completeWalletOrder")
-      .waitForElementVisible(".swal2-container.swal2-center.swal2-fade.swal2-shown .swal2-modal.swal2-show .swal2-buttonswrapper .swal2-confirm.swal2-styled", 3000)
+      .waitForElementVisible(
+        ".swal2-container.swal2-center.swal2-fade.swal2-shown .swal2-modal.swal2-show .swal2-buttonswrapper .swal2-confirm.swal2-styled",
+        3000)
       .click(".swal2-container.swal2-center.swal2-fade.swal2-shown .swal2-modal.swal2-show .swal2-buttonswrapper .swal2-confirm.swal2-styled")
       .end();
   }
