@@ -69,10 +69,6 @@ const CompletedOrder = ({ order, orderId, shops, orderSummary, paymentMethods, h
       </div>
 
       <div className="order-details-side">
-        <div>
-          <button className="btn btn-default btn-rate-shop btn-block">RATE THIS SHOP</button>
-        </div>
-        {/* This is the right side / side content */}
         <div className="shipping-payment-details">
           <div className="shipping-info">
             <div className="order-details-content-title">
