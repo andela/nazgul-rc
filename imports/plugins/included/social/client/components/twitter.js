@@ -22,8 +22,8 @@ export function getTwitterMeta(props) {
   if (props.media) {
     let media;
 
-    if (!/^http(s?):\/\/+/.test(props.media)) {
-      media = location.origin + props.media;
+    if (!/^http(s?):\/\/+/.test(props.settings.media)) {
+      media = location.origin + props.settings.media;
     }
 
     meta.push({
@@ -49,8 +49,14 @@ class TwitterSocialButton extends Component {
     const base = "https://twitter.com/intent/tweet";
     const text = props.settings.description;
     const username = props.settings.username;
-
-    let href = base + "?url=" + url + "&text=" + text;
+    const newImg = props.settings.media.split("?");
+    const smImg = newImg[0];
+    let href;
+    if (process.env.NODE_ENV === "production") {
+      href = base + "?url=" + url + "&text=" + text + "https://nazgul-rc-staging.herokuapp.com" + smImg;
+    } else {
+      href = base + "?url=" + url + "&text=" + text + " " + "localhost:3000" + smImg;
+    }
 
     if (username) {
       href += "&via=" + username;

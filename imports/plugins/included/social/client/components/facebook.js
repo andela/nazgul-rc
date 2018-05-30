@@ -11,8 +11,6 @@ export function getOpenGraphMeta(props) {
   const title = props.title || document.title;
   const description = props.settings.description;
 
-  console.log("the props images from the component>>>", props.media);
-
   const meta = [
     { property: "og:type", content: "article" },
     { property: "og:site_name", content: location.hostname },
@@ -21,10 +19,10 @@ export function getOpenGraphMeta(props) {
     { property: "og:description", content: description }
   ];
 
-  if (props.media) {
+  if (props.settings.media) {
     let media;
-    if (!/^http(s?):\/\/+/.test(data.media)) {
-      media = location.origin + data.media;
+    if (!/^http(s?):\/\/+/.test(props.settings.media)) {
+      media = location.origin + props.settings.media;
     }
 
     meta.push({
@@ -69,7 +67,7 @@ class FacebookSocialButton extends Component {
       window.FB.ui({
         method: "share",
         display: "popup",
-        href: this.props.url
+        href: this.props.url + " " + this.props.settings.media
       });
     }
   };

@@ -52,7 +52,7 @@ Template.twitter.onRendered(function () {
     const base = "https://twitter.com/intent/tweet";
     let ref2;
     const text = encodeURIComponent(((ref2 = data.apps.twitter) !== null ? ref2.title : void 0) || data.title);
-    let href = base + "?url=" + url + "&text=" + text;
+    let href = base + "?url=" + url + "&text=" + text + " " + data.media;
     if (data.apps.twitter.username) {
       href += "&via=" + data.apps.twitter.username;
     }
