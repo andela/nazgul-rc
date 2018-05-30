@@ -70,6 +70,7 @@ module.exports = {
       .click(".rui.btn.btn-danger.solid")
       .pause(3000)
       .assert.visible(".swal2-confirm.swal2-styled")
-      .click(".swal2-confirm.swal2-styled");
+      .click(".swal2-confirm.swal2-styled")
+      .end();
   }
 };

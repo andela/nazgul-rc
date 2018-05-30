@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Reaction } from "/client/api";
+import { Reaction, Router } from "/client/api";
 import { Components } from "@reactioncommerce/reaction-components";
 import { Meteor } from "meteor/meteor";
 import startTour from "../../../../included/adminTour";
+import onboarding from "../../../../included/onboarding/onboarding";
 
 // TODO: Delete this, and do it the react way - Mike M.
 async function openSearchModalLegacy(props) {
@@ -28,6 +29,11 @@ class NavBar extends Component {
     searchEnabled: PropTypes.bool,
     shop: PropTypes.object
   };
+
+  constructor(props) {
+    super(props);
+    this.startOnboarding = this.startOnboarding.bind(this);
+  }
 
   state = {
     navBarVisible: false
@@ -79,6 +85,31 @@ class NavBar extends Component {
     }
   }
 
+  renderOnboardingButton() {
+    if (!Reaction.hasPermission("admin")) {
+      return (
+        <div className="takeTour search">
+          <button onClick={this.startOnboarding} className="rui btn btn-default flat button" type="button" kind="flat">
+            Take a Tour
+          </button>
+        </div>
+      );
+    }
+  }
+
+  startOnboarding(e) {
+    e.preventDefault();
+    const windowPage = Router.current().route.path.indexOf("/tag/");
+    if (windowPage !== 0) {
+      Router.go("/tag/shop");
+    }
+    if (Router.current().route.path === "/tag/shop") {
+      setTimeout(() => {
+        onboarding.initManualTour();
+      }, 1000);
+    }
+  }
+
   renderNotificationIcon() {
     if (this.props.hasProperPermission) {
       return <Components.Notification />;
@@ -120,11 +151,8 @@ class NavBar extends Component {
     );
   }
   renderStaticPages() {
-    return (
-      <Components.StaticPagesComponent />
-    );
+    return <Components.StaticPagesComponent />;
   }
-
 
   renderTakeTourButton() {
     if (!Reaction.hasPermission("admin")) {
@@ -152,6 +180,7 @@ class NavBar extends Component {
         {this.renderSearchButton()}
         {this.renderTakeTourButton()}
         {this.renderNotificationIcon()}
+        {this.renderOnboardingButton()}
         {this.renderLanguage()}
         {this.renderCurrency()}
         {this.renderStaticPages()}
