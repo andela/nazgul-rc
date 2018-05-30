@@ -5,14 +5,11 @@ import { Reaction } from "/client/api";
 import { Accounts } from "/lib/collections";
 import { Random } from "meteor/random";
 
-// import { Paystack } from "../../../../../custom/payments-paystack/lib/api";
 import { Paystack } from "../../../../custom/payments-paystack/lib/api";
 import "./dashboard.html";
 
 function uiEnd(template, buttonText) {
-  // template.$(":input").removeAttr("disabled");
   return template.$("#btn-complete-order").text(buttonText);
-  // return template.$("#btn-processing").addClass("hidden");
 }
 
 function paymentAlert(errorMessage) {
@@ -40,18 +37,15 @@ function endSubmit(template) {
   return template.$("#btn-processing").addClass("hidden");
 }
 
-console.log("meteor.userId", Meteor.userId());
-console.log("Accounts", Accounts);
-
 Template.walletDashboard.helpers({
   balanceInWallet() {
+    const user = Meteor.user();
     let balance;
     Meteor.subscribe("Accounts", Reaction.getShopId());
 
     if (Reaction.Subscriptions && Reaction.Subscriptions.Account && Reaction.Subscriptions.Account.ready()) {
-      const balanceInWallet = Accounts.findOne(Meteor.userId()).wallet;
-      console.log("balanceInWallet", balanceInWallet);
-      return balanceInWallet;
+      const balanceInWallet = Accounts.findOne({ userId: user._id }).wallet;
+      return balanceInWallet.toFixed(2);
     }
   }
 });
@@ -62,11 +56,11 @@ Template.walletDashboard.helpers({
  */
 const fundWalletWithPaystack = (amount) => {
   return new Promise((resolve, reject) => {
+    const template = Template.instance();
+    const user = Meteor.user();
+
     Meteor.subscribe("Packages", Reaction.getShopId());
-
-    const email = Accounts.findOne({ _id: Meteor.userId() }).emails[0].address;
-    console.log("my email from paystack funding", email);
-
+    const email = Accounts.findOne({ userId: user._id }).emails[0].address;
     Meteor.call("paystack/loadApiKeys", (getPublicKeyError, keys) => {
       if (!getPublicKeyError) {
         const { publicKey, secretKey } = keys;
@@ -90,7 +84,6 @@ const fundWalletWithPaystack = (amount) => {
             endSubmit(this.template);
           }
         };
-        console.log("payload", payload);
         PaystackPop.setup(payload).openIframe();
       } else {
         reject(getPublicKeyError);
@@ -105,21 +98,18 @@ const fundWalletWithPaystack = (amount) => {
  * @param {Number} amount amount to be added.
  */
 const fundWallet = (amount) => {
+  const userId = Meteor.userId();
+
   // Perform some check here to ensure that amount is of the wright type
-  Meteor.call("accounts/fundWallet", amount);
+  Meteor.call("accounts/fundWallet", amount, userId);
 };
 
 Template.walletDashboard.events({
   "click #submitFund": (event) => {
     event.preventDefault();
-    console.log("event.target", event.target.addedAmount);
-
     const template = Template.instance();
     let amount = $('input[name="addAmount"]').val();
     amount = +amount;
-    console.log("input value", $('input[id="addAmount"]'));
-    console.log("amount", amount);
-
     if (!amount || isNaN(amount) || amount === 0) {
       Alerts.toast("Enter a valid amount", "error");
       uiEnd(template, "Resubmit Payment");
@@ -127,11 +117,10 @@ Template.walletDashboard.events({
       beginSubmit(template, "Submitting");
       fundWalletWithPaystack(amount)
         .then((result) => {
-          console.log("result from fundwallet server method", result);
           fundWallet((result.amount / 100));
           endSubmit(template);
           $('input[name="addAmount"]').val("");
-          Alerts.toast(`Yassss! ${(result.amount / 100)} has been added to your wallet`);
+          Alerts.toast(`Yassss! ₦${(result.amount / 100)} has been added to your wallet`);
         })
         .catch((error) => {
           endSubmit(template);

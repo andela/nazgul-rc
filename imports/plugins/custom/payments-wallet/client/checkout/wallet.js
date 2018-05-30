@@ -11,10 +11,8 @@ import "./wallet.html";
 Template.walletPaymentForm.helpers({
   balanceInWallet() {
     const user = Meteor.user();
-    console.log("user Meteor", user);
     const balanceInWallet = Accounts.findOne({ userId: user._id }).wallet;
-    console.log("walletbalance", balanceInWallet);
-    return balanceInWallet;
+    return balanceInWallet.toFixed(2);
   }
 });
 
@@ -37,24 +35,21 @@ Template.walletPaymentForm.events({
  * @param {Number} productPrice The productPrice to take away from the wallet
  */
 const deductFromWallet = (productPrice) => {
-  Meteor.call("accounts/deductFromWallet", productPrice);
+  const user = Meteor.user();
+  Meteor.call("accounts/deductFromWallet", productPrice, user._id);
 };
 
 Template.walletPaymentForm.events({
   "click #completeWalletOrder": (event) => {
     event.preventDefault();
-    const productPrice = Math.round(Cart.findOne().getTotal());
-    console.log("Cart", Cart);
-    console.log("productPrice", productPrice);
+    const productPrice = Number(Cart.findOne().getTotal());
     const currency = Shops.findOne().currency;
-    console.log("currency", currency);
 
     Meteor.subscribe("Packages", Reaction.getShopId());
     const packageData = Packages.findOne({
       name: "wallet",
       shopId: Reaction.getShopId()
     });
-    console.log("walletPackage from db", packageData);
 
     Meteor.call("accounts/getWalletBalance", (error, balance) => {
       if (productPrice > balance) {
@@ -63,7 +58,7 @@ Template.walletPaymentForm.events({
       } else {
         // Display a warning alert
         Alerts.alert({
-          title: `${productPrice} will be deducted from your wallet`,
+          title: `₦${productPrice} will be deducted from your wallet`,
           type: "warning",
           showCancelButton: true,
           confirmButtonText: "Confirm"

@@ -568,4 +568,46 @@ describe("Account Meteor method ", function () {
       return done();
     });
   });
+
+  describe("getWalletBalance", function ()   {
+    it("should create and get wallet balance for every logged in user", function (done) {
+      const account = Factory.create("account");
+      sandbox.stub(Meteor, "userId", function () {
+        return account.userId;
+      });
+      expect(account.wallet).to.equal(0);
+      done();
+    });
+  });
+
+  describe("accounts/fundWallet", () => {
+    it("should fund the wallet of every logged in user", (done) => {
+      const account = Factory.create("account");
+      const updateAccountSpy = sandbox.spy(Accounts, "update");
+      const amount = 77;
+      const userId = account.userId;
+      Meteor.call("accounts/fundWallet", amount, userId);
+      expect(updateAccountSpy).to.have.been.called;
+      done();
+    });
+
+    it("should not fund wallet if wrong arguments were passed", (done) => {
+      const account = Factory.create("account");
+      const updateAccount = sandbox.spy(Accounts, "update");
+      const amount = "ttt";
+      const userId = 89;
+      expect(() => Meteor.call("accounts/fundWallet", amount, userId)).to.throw;
+      expect(updateAccount).to.not.have.been.called;
+      done();
+    });
+  });
+
+  it("should not deduct from wallet if wrong arguments were passed", (done) => {
+    const updateAccountSpy = sandbox.spy(Accounts, "update");
+    const amount = "ttt";
+    const userId = 88;
+    expect(() => Meteor.call("accounts/deductFromWallet", amount, userId)).to.throw;
+    expect(updateAccountSpy).to.not.have.been.called;
+    done();
+  });
 });
