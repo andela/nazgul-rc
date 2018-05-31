@@ -104,7 +104,7 @@ class NavBar extends Component {
 
   renderRatingsAndReviews() {
     return (
-      <div className="search">
+      <div className="search reviews-n">
         <Components.ShopRatingsAndReviewsComponent />
       </div>
     );
