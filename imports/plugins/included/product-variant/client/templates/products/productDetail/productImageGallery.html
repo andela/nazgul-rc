@@ -5,7 +5,7 @@
       {{> imageDetail}}
     {{else}}
      <li>
-        <img src= "/resources/placeholder.gif" class="img-responsive" id="img-upload">
+        <img src= "/resources/sneaker2.jpeg" class="img-responsive" id="img-upload">
      </li>
     {{/each}}
   </ul>
@@ -16,7 +16,7 @@
 
 <template name="imageDetail">
   <li class="gallery-image gallery-sortable" data-index="{{_id}}">
-    <img src="{{url uploading='/resources/placeholder.gif' storing='/resources/placeholder.gif' store='large'}}" class="img-responsive" alt="{{title}}">
+    <img src="{{url uploading='/resources/sneaker2.jpeg' storing='/resources/sneaker2.jpeg' store='large'}}" class="img-responsive" alt="{{title}}">
     {{#unless this.isUploaded}}
       {{> FS.UploadProgressBar bootstrap=true}}
     {{/unless}}

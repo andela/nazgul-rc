@@ -2,6 +2,41 @@
   color: @brand-success;
 }
 
+.fa-eye, .fa-archive, .fa-undo, .fa-plus, {
+  color: black;
+}
+
+a.rui.tag.link:hover {
+  background-color:rgba(0,0,0,0.1) !important;
+  color: white !important
+}
+.bell-nav:hover{
+  color: #000
+}
+.admin-control-quicklinks {
+  color: #fff;
+}
+
+.search:hover {
+  color: black;
+}
+
+.rui.toolbar.toolbar-vertical.admin-shortcut-bar .fa {
+  color: #fff;
+}
+
+.fa-search, .fa-language, .fa-caret-down, .fa-bell {
+  color: #fff;
+}
+
+.rui.panel-body.no-padding .fa {
+  color: #000;
+}
+
+.fa-bell:hover {
+  color: #000;
+}
+
 html.rtl .rui.admin.action-view {
   border-right: 1px solid @black10;
 }
@@ -14,7 +49,7 @@ html:not(.rtl) .rui.admin.action-view {
   .display(flex);
   .flex(0 0 auto);
   height: 100%;
-  background-color: @white;
+  background-color: #47B25D;
   width: 0;
   overflow: hidden;
   .transition(width 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955));
@@ -58,6 +93,18 @@ html:not(.rtl) .rui.admin.action-view {
   }
 }
 
+.btn-rate-shop {
+  background-color: #1c98d4;
+  color: #fff;
+  height: 50px;
+}
+
+.btn-rate-shop:hover {
+  background-color: #324D5C;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #fff;
+}
+
 .rui.toolbar.admin-shortcut-bar {
   display: flex;
   flex: 0 0 auto;
@@ -68,7 +115,7 @@ html:not(.rtl) .rui.admin.action-view {
   min-width: @admin-controls-menu-width;
   width: @admin-controls-menu-width;
 
-  background-color: @white;
+  background-color: #324D5C;
   position: relative;
   z-index: @zindex-modal;
 
@@ -92,6 +139,22 @@ html:not(.rtl) .rui.admin.action-view {
     font-size: 3.2rem;
 }
 
+.search-e:hover, .notification-icon:hover, .currency-e:hover, .language-e:hover, .accounts:hover, .navbar-item:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.currency-e:focus {
+  color: white;
+}
+
+.bell-nav:hover {
+  color: #fff !important;
+}
+
+.fa-bell:hover {
+  color: #fff !important;
+}
+
 .admin-shortcut-bar nav .btn.active {
   color: @component-active-color;
   background-color: @component-active-bg;
@@ -111,6 +174,7 @@ html:not(.rtl) .rui.admin.action-view {
 
   .rui.toolbar.admin-shortcut-bar {
     display: none;
+    background-color: #324D5C;
   }
 
   // .admin-shortcut-bar .admin-controls-actions a,
@@ -120,6 +184,10 @@ html:not(.rtl) .rui.admin.action-view {
   //   min-width: 44px;
   //   min-height: 44px;
   // }
+}
+
+.control-label {
+  color: #46B29D
 }
 
 .admin-shortcut-bar hr {
@@ -197,8 +265,6 @@ body.admin-vertical .admin-controls {
   padding-left: 20px;
 }
 
-// patch for autoform's mysteriously
-// not getting the form-control class
 .admin-controls-content label {
   font-weight: lighter;
 }
@@ -250,6 +316,29 @@ body.admin-vertical .admin-controls {
   border-left: 0;
   border-right: 0;
   border-bottom: 0;
+}
+
+button.rui.btn.btn-default.flat.take-tour-span {
+  color: #fff;
+}
+
+.take-tour {
+  color: #fff;
+}
+
+.pdp.add-to-cart input {
+  width: 78% !important;
+  background-color: #fff !important;
+  color: #46B29D !important;
+  border: 1px solid #46B29D !important;
+  margin-left: 22px !important;
+  font-size: 1.3em !important;
+  margin-bottom: 10px;
+}
+
+.take-tour:hover {
+  background-color: rgba(0,0,0,0.1);
+  height: 100%;
 }
 
 .rui.admin.action-view-pane .panel-group > .panel:first-child {

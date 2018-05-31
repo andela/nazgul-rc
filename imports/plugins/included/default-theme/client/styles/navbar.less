@@ -2,17 +2,17 @@
 .rui.navbar {
   .display(flex);
   .align-items(center);
-  background-color: @navbar-default-bg;
-  color: @navbar-default-link-color;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
   border-radius: 0;
   border: 0;
+  background-color: #324D5C;
 }
 
 .rui.navbar a,
 .rui.navbar a:hover,
 .rui.navbar a:focus,
 .rui.navbar .dropdown-toggle {
-  color: @navbar-default-link-color;
+  color: white;
   cursor: pointer;
   text-decoration: none;
 }
@@ -76,6 +76,10 @@
   left: -1px;
 }
 
+.rui.navbar .dropdown a {
+  color: black;
+}
+
 .rui.navbar .dropdown .dropdown-menu > .active > a{
   color: @white;
 }
@@ -90,6 +94,15 @@
   height: 100%;
 
   padding: 0 14px;
+}
+
+.menu-item:hover {
+  color: black;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.currencies {
+  color: #fff;
 }
 
 .rui.navbar .languages,
@@ -250,6 +263,10 @@ html:not(.rtl) .rui.navbar .languages .dropdown-menu {
   color: @brand-vivid-color;
   text-decoration: none;
   background-color: transparent;
+}
+
+.languages.hidden-xs {
+  color: white;
 }
 
 .rui.navbar .accounts .dropdown-menu {
@@ -436,16 +453,14 @@ html:not(.rtl) .rui.navbar .languages .dropdown-menu {
 .rui.navbar .search:hover {
   background-color: @navbar-default-toggle-icon-bar-bg;
   border-color: @navbar-default-toggle-border-color;
-}
-
-.rui.navbar .search:hover button {
-  outline: none;
+  color: #000000;
 }
 
 .rui.navbar .languages:hover,
 .rui.navbar .currencies:hover {
   background-color: @navbar-default-toggle-icon-bar-bg;
   border-color: @navbar-default-toggle-border-color;
+  color: #000000;
 }
 
 .accounts-a-tag {
@@ -478,13 +493,14 @@ html:not(.rtl) .rui.navbar .languages .dropdown-menu {
 .accounts-btn-tag {
   padding: 6px 12px !important;
   color: #fff !important;
-  background-color: @btn-primary-bg !important;
+  background-color: #46B29D;
   color: @btn-primary-color !important;
-  border-color: @btn-primary-bg !important;
+  border-color: #46B29D;
 }
 
 .accounts-btn-tag:hover {
-  background: darken(@btn-primary-bg, 5%) !important;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+  background-color: #46B29D;
 }
 
 .accounts-img-tag {
