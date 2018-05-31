@@ -54,3 +54,6 @@
 .r-and-r {
   margin-top: 0.6em;
 }
+#reviewsModal {
+  cursor: default;
+}

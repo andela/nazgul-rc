@@ -4,6 +4,7 @@ import { Reaction } from "/client/api";
 import { Components } from "@reactioncommerce/reaction-components";
 import { Meteor } from "meteor/meteor";
 import startTour from "../../../../included/adminTour";
+import ShopRatingsAndReviewsComponent from "../../../../custom/ratings-and-reviews/client/components/shopRatingsAndReviews.jsx";
 
 // TODO: Delete this, and do it the react way - Mike M.
 async function openSearchModalLegacy(props) {
@@ -77,6 +78,14 @@ class NavBar extends Component {
         </div>
       );
     }
+  }
+
+  renderRatingsAndReviews() {
+    return (
+      <div className="search">
+        <Components.ShopRatingsAndReviewsComponent />
+      </div>
+    );
   }
 
   renderNotificationIcon() {
@@ -155,6 +164,7 @@ class NavBar extends Component {
         {this.renderLanguage()}
         {this.renderCurrency()}
         {this.renderStaticPages()}
+        {this.renderRatingsAndReviews()}
         {this.renderMainDropdown()}
         {this.renderCartContainerAndPanel()}
       </div>

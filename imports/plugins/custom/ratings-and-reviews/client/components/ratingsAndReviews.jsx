@@ -147,8 +147,7 @@ class RatingsAndReviewsComponent extends Component {
     return (
       <div className="ratings-and-reviews row">
         <div
-          className={`${showForm ? "col-md-6" : ""} border-right
-           average-rating text-center`}
+          className={`${showForm ? "col-md-6" : ""} average-rating text-center`}
         >
           <h5>
             <strong>Average Rating</strong>
@@ -157,7 +156,7 @@ class RatingsAndReviewsComponent extends Component {
             [1, 2, 3, 4, 5].map((rating) => (
               <span
                 key={rating}
-                className={`fa fa-star big-star ${rating <= averageRating ?
+                className={`fa fa-star big-star product ${rating <= averageRating ?
                   "rated" : ""}`}
               />
             ))
@@ -185,7 +184,7 @@ class RatingsAndReviewsComponent extends Component {
                         ))
                       }
                       <span className="pull-right">{ratingAndReview.date}</span>
-                      <div className="r-and-r">{ratingAndReview.review}</div>
+                      <div className="r-and-r product">{ratingAndReview.review}</div>
                       <div className="pull-right">
                         {`- ${ratingAndReview.name}`}
                       </div>
@@ -205,7 +204,7 @@ class RatingsAndReviewsComponent extends Component {
             (
               <div className="col-md-6">
                 <h5><strong>Have you used this product before?</strong></h5>
-                <div className="rating-container">
+                <div className="rating-container product">
                   <span
                     className="fa fa-star pointer"
                     onMouseEnter={() => this.hoverRating(1)}
@@ -214,7 +213,7 @@ class RatingsAndReviewsComponent extends Component {
                     ref={(input) => { this.one = input; }}
                   />
                   <span
-                    className="fa fa-star pointer"
+                    className="fa fa-star pointer product"
                     onMouseEnter={() => this.hoverRating(2)}
                     onMouseLeave={this.leaveRating}
                     onClick={() => this.rate(2)}
@@ -243,7 +242,7 @@ class RatingsAndReviewsComponent extends Component {
                   />
                 </div>
                 <span>{this.state.ratingText}</span>
-                <form className="review-form" onSubmit={this.submitReview}>
+                <form className="review-form productForm" onSubmit={this.submitReview}>
                   <textarea
                     rows="6"
                     placeholder="Drop a review."
@@ -285,13 +284,15 @@ const computeAverage = (ratingsAndReviews) => {
   });
   return ratingSum / count;
 };
-
 const compose = (props, onData) => {
+  const productId = Reaction.Router.getParam("handle");
   if (Meteor.subscribe(
     "RatingsAndReviews",
-    Reaction.Router.getParam("handle")).ready()
+    productId).ready()
   ) {
-    const ratingsAndReviews = RatingsAndReviews.find().fetch();
+    const ratingsAndReviews = RatingsAndReviews.find({
+      productId
+    }).fetch();
     onData(null, {
       averageRating: computeAverage(ratingsAndReviews)
     });
