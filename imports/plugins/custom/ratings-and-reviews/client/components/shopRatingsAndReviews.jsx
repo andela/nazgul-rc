@@ -78,9 +78,11 @@ class ShopRatingsAndReviewsComponent extends Component {
     return (
       <div>
         <div data-toggle="modal" data-target="#reviewsModal" onClick={this.refresh} id="openReviewsModal">
-          {
-            isQualified ? "Rate Us" : "Shop Reviews"
-          }
+          <span className="tertiary-color">
+            {
+              isQualified ? "Rate Us" : "Shop Reviews"
+            }
+          </span>
         </div>
         <div
           className="modal fade"
@@ -108,7 +110,7 @@ class ShopRatingsAndReviewsComponent extends Component {
               </div>
               <div className="modal-body">
                 <div className="row">
-                  <div className={`${isQualified ? "col-md-6 " : ""}average-rating text-center shop`}>
+                  <div className={`${isQualified ? "col-md-6 " : ""}average-rating text-center shop no-margin-top`}>
                     <h5>
                       <strong>Average Rating</strong>
                     </h5>

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Reaction } from "/client/api";
+import { Reaction, Router } from "/client/api";
 import { Components } from "@reactioncommerce/reaction-components";
 import { Meteor } from "meteor/meteor";
 import startTour from "../../../../included/adminTour";
 import ShopRatingsAndReviewsComponent from "../../../../custom/ratings-and-reviews/client/components/shopRatingsAndReviews.jsx";
+import onboarding from "../../../../included/onboarding/onboarding";
 
 // TODO: Delete this, and do it the react way - Mike M.
 async function openSearchModalLegacy(props) {
@@ -30,6 +31,11 @@ class NavBar extends Component {
     shop: PropTypes.object
   };
 
+  constructor(props) {
+    super(props);
+    this.startOnboarding = this.startOnboarding.bind(this);
+  }
+
   state = {
     navBarVisible: false
   };
@@ -49,7 +55,7 @@ class NavBar extends Component {
 
   renderLanguage() {
     return (
-      <div className="languages hidden-xs">
+      <div className="languages hidden-xs language-e">
         <Components.LanguageDropdown />
       </div>
     );
@@ -57,7 +63,7 @@ class NavBar extends Component {
 
   renderCurrency() {
     return (
-      <div className="currencies hidden-xs">
+      <div className="currencies hidden-xs currency-e">
         <Components.CurrencyDropdown />
       </div>
     );
@@ -73,8 +79,24 @@ class NavBar extends Component {
   renderSearchButton() {
     if (this.props.searchEnabled) {
       return (
-        <div className="search">
-          <Components.FlatButton icon="fa fa-search" kind="flat" onClick={this.handleOpenSearchModal} />
+        <div className="search search-e">
+          <Components.FlatButton
+            icon="fa fa-search"
+            kind="flat"
+            onClick={this.handleOpenSearchModal}
+          />
+        </div>
+      );
+    }
+  }
+
+  renderOnboardingButton() {
+    if (!Reaction.hasPermission("admin")) {
+      return (
+        <div className="takeTour search">
+          <button onClick={this.startOnboarding} className="rui btn btn-default flat button" type="button" kind="flat">
+            Take a Tour
+          </button>
         </div>
       );
     }
@@ -88,9 +110,26 @@ class NavBar extends Component {
     );
   }
 
+  startOnboarding(e) {
+    e.preventDefault();
+    const windowPage = Router.current().route.path.indexOf("/tag/");
+    if (windowPage !== 0) {
+      Router.go("/tag/shop");
+    }
+    if (Router.current().route.path === "/tag/shop") {
+      setTimeout(() => {
+        onboarding.initManualTour();
+      }, 1000);
+    }
+  }
+
   renderNotificationIcon() {
     if (this.props.hasProperPermission) {
-      return <Components.Notification />;
+      return (
+        <div className="notification-e">
+          <Components.Notification />
+        </div>
+      );
     }
   }
 
@@ -113,9 +152,7 @@ class NavBar extends Component {
 
   renderHamburgerButton() {
     return (
-      <div className="showmenu">
-        <Components.Button icon="bars" onClick={this.toggleNavbarVisibility} />
-      </div>
+      <div className="showmenu showmenu-e"><Components.Button icon="bars" onClick={this.toggleNavbarVisibility} /></div>
     );
   }
 
@@ -129,11 +166,8 @@ class NavBar extends Component {
     );
   }
   renderStaticPages() {
-    return (
-      <Components.StaticPagesComponent />
-    );
+    return <Components.StaticPagesComponent />;
   }
-
 
   renderTakeTourButton() {
     if (!Reaction.hasPermission("admin")) {
@@ -147,6 +181,7 @@ class NavBar extends Component {
           onClick={event => {
             startTour(event);
           }}
+          className="take-tour-span"
         />
       </div>
     );
@@ -161,10 +196,11 @@ class NavBar extends Component {
         {this.renderSearchButton()}
         {this.renderTakeTourButton()}
         {this.renderNotificationIcon()}
+        {this.renderOnboardingButton()}
+        {this.renderRatingsAndReviews()}
         {this.renderLanguage()}
         {this.renderCurrency()}
         {this.renderStaticPages()}
-        {this.renderRatingsAndReviews()}
         {this.renderMainDropdown()}
         {this.renderCartContainerAndPanel()}
       </div>

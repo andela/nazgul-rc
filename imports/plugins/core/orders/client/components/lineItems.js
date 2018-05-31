@@ -66,7 +66,7 @@ class LineItems extends Component {
       );
     }
     return (
-      <img src= "/resources/placeholder.gif" />
+      <img src= "/resources/sneaker2.jpeg" />
     );
   }
 

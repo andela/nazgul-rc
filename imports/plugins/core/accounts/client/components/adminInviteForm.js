@@ -95,7 +95,7 @@ class AdminInviteForm extends Component {
       return null;
     }
     const buttonElement = (opt) => (
-      <Components.Button bezelStyle="solid" label={group.name && _.startCase(group.name)} >
+      <Components.Button bezelStyle="solid" className="btn-reaction" label={group.name && _.startCase(group.name)} >
         &nbsp;
         {opt && opt.length && // add icon only if there's a list of options
           <i className="fa fa-chevron-down" />

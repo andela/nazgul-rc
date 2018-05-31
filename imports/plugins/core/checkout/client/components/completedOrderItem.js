@@ -14,7 +14,7 @@ const CompletedOrderItem = ({ item, handleDisplayMedia }) => {
   if (handleDisplayMedia(item)) {
     image = handleDisplayMedia(item).url();
   } else {
-    image = "/resources/placeholder.gif";
+    image = "/resources/sneaker2.jpeg";
   }
   return (
     <div className="row order-details-line">
