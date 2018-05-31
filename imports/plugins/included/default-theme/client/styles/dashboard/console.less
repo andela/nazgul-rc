@@ -235,8 +235,6 @@ html:not(.rtl) .rui.admin.action-view {
   padding: 20px;
 }
 
-// Only apply form-control styles to non .rui form fields
-// This should only apply to normal BS3 / Autoform fields
 .admin-controls-content .form-group:not(.rui) input:not([type=checkbox]) {
   .form-control;
 }
@@ -249,6 +247,11 @@ body.admin-vertical .admin-controls {
   height: 20vh;
   min-width: 100%;
   max-width: 100%;
+}
+
+.reviews-section {
+  max-height: 400px;
+  border: 1px solid black;
 }
 
 .admin-control-open {
@@ -265,8 +268,6 @@ body.admin-vertical .admin-controls {
   padding-left: 20px;
 }
 
-// patch for autoform's mysteriously
-// not getting the form-control class
 .admin-controls-content label {
   font-weight: lighter;
 }
