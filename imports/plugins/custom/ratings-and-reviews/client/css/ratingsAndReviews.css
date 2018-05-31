@@ -55,3 +55,12 @@
 .r-and-r {
   margin-top: 0.6em;
 }
+#reviewsModal {
+  cursor: default;
+}
+.tertiary-color {
+  color: #46B29D;
+}
+.no-margin-top {
+  margin-top: 0px;
+}

@@ -28,7 +28,7 @@ class AddToCartButton extends Component {
                 onChange={this.handleCartQuantityChange}
                 type="number"
                 value={this.props.cartQuantity}
-                placeholder="Qty"
+                placeholder="quantity"
               />
             </div>
           </form>

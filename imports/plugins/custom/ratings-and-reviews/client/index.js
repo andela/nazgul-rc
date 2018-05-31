@@ -1,4 +1,4 @@
 import { registerComponent } from "@reactioncommerce/reaction-components";
-import { RatingsAndReviews } from "./components";
+import RatingsAndReviewsComponent from "./components";
 
-registerComponent("RatingsAndReviews", RatingsAndReviews);
+registerComponent("RatingsAndReviews", RatingsAndReviewsComponent);
