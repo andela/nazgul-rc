@@ -202,7 +202,7 @@ class RatingsAndReviewsComponent extends Component {
         {
           showForm ?
             (
-              <div className="col-md-6">
+              <div className="col-md-6 average-rating">
                 <h5><strong>Have you used this product before?</strong></h5>
                 <div className="rating-container product">
                   <span
