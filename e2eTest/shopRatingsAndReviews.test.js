@@ -76,11 +76,11 @@ module.exports = {
       .assert.visible("div.text-center.rate-shop")
       .assert.visible("div.average-rating.text-center.shop")
       .click(".fa.fa-star.pointer.shop")
-      .setValue("textarea.shop", "This is a test review")
+      .setValue("textarea.shop", "This is a another test review")
       .pause(1000)
       .submitForm("form.shopForm")
       .pause(5000)
-      .assert.containsText(".r-and-r.shop", "This is a test review")
+      .assert.containsText(".r-and-r.shop", "This is a another test review")
       .pause(2000)
       .end();
   }
