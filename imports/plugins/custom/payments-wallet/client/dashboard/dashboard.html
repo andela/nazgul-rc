@@ -1,0 +1,117 @@
+<template name="walletDashboard">
+  <div class="walletDashboard">
+    <div class="container-lg">
+      <div class="panel">
+
+        <div class="wallet-dashboard-balance">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <h3 class="payment-header">My Wallet</h3>
+            </div>
+            <div class="panel-body text-center container z-depth-2">
+              <div class="balance-header">
+                <h2 class="balance-text">Balance: ₦{{balanceInWallet}}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container form-margin">
+          <div class="row">
+            <div class="col-sm-12 col-md-6 column">
+              <div class="panel panel-default ">
+                  <div class="panel-heading">
+                    <h4 class="payment-header no-margin-down">Fund My Wallet</h4>
+                  </div>
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <form class="form-pad">
+                        <label
+                          id="addedAmount"
+                        ></label>
+                          Amount (in Naira)
+                        <input
+                          id="addAmount"
+                          name="addAmount"
+                          class="form-control form-width"
+                          type="number"
+                          placeholder="e.g: 5000"
+                        />
+                        <button id="submitFund" class="form-width submit-pad btn-primary" type="submit">
+                        <span id="btn-complete-order">Submit Fund</span>
+                        <i class="fa fa-spinner fa-spin hidden" id="btn-processing"></i>
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 column">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">
+                      <h4 class="payment-header no-margin-down">Fund Friend's Wallet</h4>
+                    </div>
+                    <div class="panel-body">
+                      <div class="form-group form-margin-down">
+                        <form class="form-pad">
+                          <label>
+                            Wallet Holder Email
+                          </label>
+                          <input
+                            class="form-control form-width"
+                            type="email"
+                            placeholder="e.g: nazgul_rc@gmail.com"
+                          />
+                          <label>
+                            Amount (in Naira)
+                          </label>
+                          <input
+                            class="form-control form-width"
+                            type="number"
+                            placeholder="e.g: 5000"
+                          />
+                          <button class="form-width submit-pad btn-primary" type="submit">submit
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- <div class="container">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <div>
+                  <h4 class="payment-header">Wallet History</h4>
+                </div>
+                <div class="row text-center wallet-history-border-header">
+                  <div class="col-4">
+                      Amount
+                  </div>
+                  <div class="col-4">
+                    Transaction Information
+                  </div>
+                  <div class="col-4">
+                    Date
+                  </div>
+                </div>
+                <div class="row text-center wallet-history-border">
+                    <div class="col-4">
+                      ₦200
+                    </div>
+                    <div class="col-4">
+                      Transaction Information
+                    </div>
+                    <div class="col-4">
+                      29th May, 2018
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</template>
