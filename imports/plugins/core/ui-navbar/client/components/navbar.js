@@ -4,6 +4,7 @@ import { Reaction, Router } from "/client/api";
 import { Components } from "@reactioncommerce/reaction-components";
 import { Meteor } from "meteor/meteor";
 import startTour from "../../../../included/adminTour";
+import ShopRatingsAndReviewsComponent from "../../../../custom/ratings-and-reviews/client/components/shopRatingsAndReviews.jsx";
 import onboarding from "../../../../included/onboarding/onboarding";
 
 // TODO: Delete this, and do it the react way - Mike M.
@@ -101,6 +102,14 @@ class NavBar extends Component {
     }
   }
 
+  renderRatingsAndReviews() {
+    return (
+      <div className="search">
+        <Components.ShopRatingsAndReviewsComponent />
+      </div>
+    );
+  }
+
   startOnboarding(e) {
     e.preventDefault();
     const windowPage = Router.current().route.path.indexOf("/tag/");
@@ -188,6 +197,7 @@ class NavBar extends Component {
         {this.renderTakeTourButton()}
         {this.renderNotificationIcon()}
         {this.renderOnboardingButton()}
+        {this.renderRatingsAndReviews()}
         {this.renderLanguage()}
         {this.renderCurrency()}
         {this.renderStaticPages()}
