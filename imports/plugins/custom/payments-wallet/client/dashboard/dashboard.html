@@ -4,13 +4,13 @@
       <div class="panel">
 
         <div class="wallet-dashboard-balance">
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">
+          <div class="panel panel-default ">
+            <!-- <div class="panel-heading text-center">
               <h3 class="payment-header">My Wallet</h3>
-            </div>
-            <div class="panel-body text-center container z-depth-2">
+            </div> -->
+            <div class="panel-body text-center container balance">
               <div class="balance-header">
-                <h2 class="balance-text">Balance: ₦{{balanceInWallet}}</h2>
+                <h2 class="balance-text">Wallet Balance: ₦{{balanceInWallet}}</h2>
               </div>
             </div>
           </div>
@@ -20,7 +20,7 @@
           <div class="row">
             <div class="col-sm-12 col-md-6 column">
               <div class="panel panel-default ">
-                  <div class="panel-heading">
+                  <div class="panel-heading balance-panel">
                     <h4 class="payment-header no-margin-down">Fund My Wallet</h4>
                   </div>
                   <div class="panel-body">
@@ -37,7 +37,9 @@
                           type="number"
                           placeholder="e.g: 5000"
                         />
-                        <button id="submitFund" class="form-width submit-pad btn-primary" type="submit">
+                        <button id="submitFund"
+                          class="form-width submit-pad btn-darkgrey waves-effect waves-teal"
+                          type="submit">
                         <span id="btn-complete-order">Submit Fund</span>
                         <i class="fa fa-spinner fa-spin hidden" id="btn-processing"></i>
                         </button>
@@ -48,7 +50,7 @@
             </div>
             <div class="col-sm-12 col-md-6 column">
                 <div class="panel panel-default ">
-                    <div class="panel-heading">
+                    <div class="panel-heading balance-panel">
                       <h4 class="payment-header no-margin-down">Fund Friend's Wallet</h4>
                     </div>
                     <div class="panel-body">
@@ -58,6 +60,7 @@
                             Wallet Holder Email
                           </label>
                           <input
+                            id="transferEmail"
                             class="form-control form-width"
                             type="email"
                             placeholder="e.g: nazgul_rc@gmail.com"
@@ -66,11 +69,14 @@
                             Amount (in Naira)
                           </label>
                           <input
+                            id="transferFund"
                             class="form-control form-width"
                             type="number"
                             placeholder="e.g: 5000"
                           />
-                          <button class="form-width submit-pad btn-primary" type="submit">submit
+                          <button
+                            id="transferFund"
+                            class="form-width submit-pad btn-darkgrey waves-effect waves-teal" type="submit">Transfer Fund
                           </button>
                         </form>
                       </div>

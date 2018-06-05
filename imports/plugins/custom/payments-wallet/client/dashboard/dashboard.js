@@ -104,6 +104,34 @@ const fundWallet = (amount) => {
   Meteor.call("accounts/fundWallet", amount, userId);
 };
 
+const fundOtherCustomerWallet = (amount, email) => {
+  console.log("amountfromfund", amount);
+  console.log("emailfromfund", email);
+  console.log("Metoer user", Meteor.user());
+  console.log("Metoer email", Meteor.email());
+
+  const template = Template.instance();
+  Alerts.alert({
+    title: `You are about to transfer ${amount} to ${email}`,
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Confirm"
+  }, (isConfirm) => {
+    if (isConfirm) {
+      Meteor.call("accounts/fundOtherCustomerWallet", amount, email, (err, data) => {
+        if (!err) {
+          if (!data) {
+            Alerts.toast("User with this email does not exist.", "error");
+            uiEnd(template, "Resubmit Payment");
+          } else {
+            Alerts.toast(`Yassss! ₦${amount} has been transfered to ${email}`);
+          }
+        }
+      });
+    }
+  });
+};
+
 Template.walletDashboard.events({
   "click #submitFund": (event) => {
     event.preventDefault();
@@ -126,6 +154,50 @@ Template.walletDashboard.events({
           endSubmit(template);
           Alerts.toast(error.message, "error");
         });
+    }
+  },
+
+  "click #transferFund"() {
+    event.preventDefault();
+    const template = Template.instance();
+    let transferAmount = $('input[name="transferAmount"]').val();
+    let email = $('input[name="transferEmail"]').val();
+    transferAmount = +transferAmount;
+    email = email.toLowerCase();
+    console.log("transferAount", transferAmount);
+    console.log("email", email);
+    const regexForEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; //eslint-disable-line
+    const validEmail =  regexForEmail.test(email);
+    console.log("validemail", validEmail);
+    if (!transferAmount || isNaN(transferAmount) || transferAmount === 0) {
+      Alerts.toast("Enter a valid amount", "error");
+      uiEnd(template, "Retransfer Funds");
+    } else if (!validEmail) {
+      Alerts.toast("Enter a valid email", "error");
+      uiEnd(template, "Retransfer Funds");
+    } else if (Reaction.Subscriptions && Reaction.Subscriptions.Account && Reaction.Subscriptions.Account.ready()) {
+      const user = Meteor.user();
+      const senderAccount = Accounts.findOne({ userId: user._id });
+      const senderEmail = senderAccount.emails[0].address;
+      console.log("senderEmail", senderEmail);
+      console.log("senderemail", senderAccount.emails[0]);
+
+      if (validEmail === senderEmail) {
+        Alerts.toast("You can't transfer funds to yourself");
+        uiEnd(template, "Retransfer Funds");
+      }
+
+      Meteor.call("accounts/getWalletBalance", (error, balance) => {
+        if (transferAmount > balance) {
+          // Display an error alert
+          Alerts.alert("Insufficient Funds, Kindly fund your wallet and retry!");
+          uiEnd(template, "Retransfer Funds");
+        } else {
+          fundOtherCustomerWallet(transferAmount, validEmail);
+          endSubmit(template);
+        }
+      });
+      beginSubmit(template, "Submitting");
     }
   }
 });
