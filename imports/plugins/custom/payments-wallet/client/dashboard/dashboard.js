@@ -177,16 +177,16 @@ Template.walletDashboard.events({
     transferAmount = +transferAmount;
     if (!email || email === undefined) {
       Alerts.toast("Email of in-app friend is required", "error");
-      uiEnd2(template, "Retranfer Funds");
+      uiEnd2(template, "Transfer Funds");
     }
     const regexForEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; //eslint-disable-line
     const validEmail =  regexForEmail.test(email);
     if (!transferAmount || isNaN(transferAmount) || transferAmount === 0) {
       Alerts.toast("Enter a valid amount", "error");
-      uiEnd2(template, "Retranfer Funds");
+      uiEnd2(template, "Transfer Funds");
     } else if (!validEmail) {
       Alerts.toast("Enter a valid email", "error");
-      uiEnd2(template, "Retranfer Funds");
+      uiEnd2(template, "Transfer Funds");
     } else if (Reaction.Subscriptions && Reaction.Subscriptions.Account && Reaction.Subscriptions.Account.ready()) {
       beginSubmit2(template);
 
