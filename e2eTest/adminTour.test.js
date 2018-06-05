@@ -20,6 +20,5 @@ module.exports = {
       .assert.containsText(".introjs-tooltiptext > h3", "Welcome to Reaction Commerce")
       // close browser when simulation finishes
       .end();
-    // .waitForElementVisible(".container-medium.index > h5", 1000);
   }
 };

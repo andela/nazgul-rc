@@ -4,6 +4,7 @@ import { Reaction, Router } from "/client/api";
 import { Components } from "@reactioncommerce/reaction-components";
 import { Meteor } from "meteor/meteor";
 import startTour from "../../../../included/adminTour";
+import ShopRatingsAndReviewsComponent from "../../../../custom/ratings-and-reviews/client/components/shopRatingsAndReviews.jsx";
 import onboarding from "../../../../included/onboarding/onboarding";
 
 // TODO: Delete this, and do it the react way - Mike M.
@@ -54,7 +55,7 @@ class NavBar extends Component {
 
   renderLanguage() {
     return (
-      <div className="languages hidden-xs">
+      <div className="languages hidden-xs language-e">
         <Components.LanguageDropdown />
       </div>
     );
@@ -62,7 +63,7 @@ class NavBar extends Component {
 
   renderCurrency() {
     return (
-      <div className="currencies hidden-xs">
+      <div className="currencies hidden-xs currency-e">
         <Components.CurrencyDropdown />
       </div>
     );
@@ -78,8 +79,12 @@ class NavBar extends Component {
   renderSearchButton() {
     if (this.props.searchEnabled) {
       return (
-        <div className="search">
-          <Components.FlatButton icon="fa fa-search" kind="flat" onClick={this.handleOpenSearchModal} />
+        <div className="search search-e">
+          <Components.FlatButton
+            icon="fa fa-search"
+            kind="flat"
+            onClick={this.handleOpenSearchModal}
+          />
         </div>
       );
     }
@@ -97,6 +102,14 @@ class NavBar extends Component {
     }
   }
 
+  renderRatingsAndReviews() {
+    return (
+      <div className="search">
+        <Components.ShopRatingsAndReviewsComponent />
+      </div>
+    );
+  }
+
   startOnboarding(e) {
     e.preventDefault();
     const windowPage = Router.current().route.path.indexOf("/tag/");
@@ -112,7 +125,11 @@ class NavBar extends Component {
 
   renderNotificationIcon() {
     if (this.props.hasProperPermission) {
-      return <Components.Notification />;
+      return (
+        <div className="notification-e">
+          <Components.Notification />
+        </div>
+      );
     }
   }
 
@@ -135,9 +152,7 @@ class NavBar extends Component {
 
   renderHamburgerButton() {
     return (
-      <div className="showmenu">
-        <Components.Button icon="bars" onClick={this.toggleNavbarVisibility} />
-      </div>
+      <div className="showmenu showmenu-e"><Components.Button icon="bars" onClick={this.toggleNavbarVisibility} /></div>
     );
   }
 
@@ -166,6 +181,7 @@ class NavBar extends Component {
           onClick={event => {
             startTour(event);
           }}
+          className="take-tour-span"
         />
       </div>
     );
@@ -181,6 +197,7 @@ class NavBar extends Component {
         {this.renderTakeTourButton()}
         {this.renderNotificationIcon()}
         {this.renderOnboardingButton()}
+        {this.renderRatingsAndReviews()}
         {this.renderLanguage()}
         {this.renderCurrency()}
         {this.renderStaticPages()}

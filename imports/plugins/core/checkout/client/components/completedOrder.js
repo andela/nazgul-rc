@@ -4,6 +4,7 @@ import { Components } from "@reactioncommerce/reaction-components";
 import CompletedShopOrders from "./completedShopOrders";
 import CompletedOrderPaymentMethod from "./completedOrderPaymentMethods";
 import CompletedOrderSummary from "./completedOrderSummary";
+import RateAndReviewShop from "../../../../custom/ratings-and-reviews/client/components/rateAndReviewShop.jsx";
 import AddEmail from "./addEmail";
 
 /**
@@ -66,11 +67,10 @@ const CompletedOrder = ({ order, orderId, shops, orderSummary, paymentMethods, h
             />
           );
         })}
+        <RateAndReviewShop />
       </div>
 
       <div className="order-details-side">
-
-        {/* This is the right side / side content */}
         <div className="shipping-payment-details">
           <div className="shipping-info">
             <div className="order-details-content-title">

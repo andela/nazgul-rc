@@ -682,7 +682,7 @@ export const methods = {
           combinedItems.push(orderItem);
 
           // Placeholder image if there is no product image
-          orderItem.placeholderImage = Meteor.absoluteUrl() + "resources/placeholder.gif";
+          orderItem.placeholderImage = Meteor.absoluteUrl() + "resources/sneaker2.jpeg";
 
           const variantImage = Media.findOne({
             "metadata.productId": orderItem.productId,

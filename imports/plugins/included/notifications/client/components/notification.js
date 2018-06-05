@@ -21,7 +21,7 @@ class Notification extends Component {
       );
     }
     return (
-      <button className="btn btn-default rui button flat">
+      <button className="btn btn-default rui button flat bell-nav">
         <i className="rui fa fa-bell" />
       </button>
     );

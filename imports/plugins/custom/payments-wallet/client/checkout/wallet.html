@@ -1,0 +1,53 @@
+<template name="walletPaymentForm">
+  <!-- {{#autoForm schema=PaystackPayment id="paystack-payment-form"}} -->
+  <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading panel-heading-flex checkie" type="button">
+          <div class="panel-title">
+            <i class="fa fa-google-wallet paddingR"></i>
+            <span>Pay With Wallet</span>
+          </div>
+        </div>
+        <div class="panel-body" id="wallet">
+            <!-- <div class="form-group{{#if afFieldIsInvalid name='payerName'}} has-error{{/if}}">
+              <label class="control-label">{{afFieldLabelText name='payerName'}}</label>
+              {{>afFieldInput name="payerName" value=cartPayerName}}
+              {{#if afFieldIsInvalid name="payerName"}}
+              <span class="help-block">{{afFieldMessage name="payerName"}}</span>
+              {{/if}}
+            </div>
+      
+            <div class="form-group{{#if afFieldIsInvalid name='payerEmail'}} has-error{{/if}}">
+              <label class="control-label">{{afFieldLabelText name='payerEmail'}}</label>
+              {{>afFieldInput name="payerEmail" value=cartPayerEmail}}
+              {{#if afFieldIsInvalid name="payerEmail"}}
+              <span class="help-block">{{afFieldMessage name="payerEmail"}}</span>
+              {{/if}}
+          </div> -->
+          <!-- <div class="alert alert-danger hidden">Oh! Snap!</div> -->
+          <div class="paddingB">Your wallet balance is <span class="text-weight-700">₦{{balanceInWallet}}</span></div>
+          <button type="submit" id="completeWalletOrder" class="rui btn btn-lg btn-primary btn-block btn-complete-order">
+            <span id="btn-complete-order" data-i18n="checkoutPayment.completeYourOrder">Complete your order</span>
+            <i class="fa fa-spinner fa-spin hidden" id="btn-processing"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  <!-- {{/autoForm}} -->
+</template>
+
+<!-- <template name="walletPaymentForm">
+  <button id="toggleForm" class="rui btn btn-lg btn-block btn-primary">Wallet</button>
+  {{#if formVisibility}}
+
+    <div class="wallet-payment-details">
+      <h3>Pay With Wallet</h3>
+      <span><b>₦{{totalPrice}}</b> would be deducted from your wallet.</span>
+    </div>
+    <button class="rui btn btn-lg btn-cta btn-block btn-complete-order" id="submitWalletPayment">
+      <span id="btn-complete-order" data-i18n="checkoutPayment.completeYourOrder">Complete your order</span>
+    </button>
+
+  {{/if}}
+
+</template> -->
