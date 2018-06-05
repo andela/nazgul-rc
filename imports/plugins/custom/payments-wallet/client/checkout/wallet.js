@@ -1,7 +1,6 @@
 /* global $ eslint camelcase: 0 */
 import { Meteor } from "meteor/meteor";
 import { Random } from "meteor/random";
-// import { ReactiveVar } from "meteor/reactive-var";
 import { Template } from "meteor/templating";
 import { Reaction } from "/client/api";
 import { Cart, Shops, Packages, Accounts } from "/lib/collections";
@@ -39,6 +38,15 @@ const deductFromWallet = (productPrice) => {
   Meteor.call("accounts/deductFromWallet", productPrice, user._id);
 };
 
+/**
+ * @method fundAdminWallet
+ * @summary funds admin's wallet.
+ * @param {Number} amount amount to be added to admin's wallet
+ */
+const fundAdminWallet = (amount, email) => {
+  Meteor.call("accounts/fundOtherCustomerWallet", amount, email);
+};
+
 Template.walletPaymentForm.events({
   "click #completeWalletOrder": (event) => {
     event.preventDefault();
@@ -53,17 +61,14 @@ Template.walletPaymentForm.events({
 
     Meteor.call("accounts/getWalletBalance", (error, balance) => {
       if (productPrice > balance) {
-        // Display an error alert
         Alerts.alert("Insufficient Funds, Kindly fund your wallet and retry!");
       } else {
-        // Display a warning alert
         Alerts.alert({
           title: `₦${productPrice} will be deducted from your wallet`,
           type: "warning",
           showCancelButton: true,
           confirmButtonText: "Confirm"
         }, (willDeduct) => {
-          // Make the payment
           if (willDeduct) {
             const paymentMethod = {
               processor: "Wallet",
@@ -82,7 +87,8 @@ Template.walletPaymentForm.events({
               if (submitPaymentError) {
                 Alerts.toast(submitPaymentError.message, "error");
               } else {
-                deductFromWallet(productPrice);
+                const adminEmail = "admin@localhost.com";
+                fundAdminWallet(productPrice, adminEmail);
               }
             });
           }

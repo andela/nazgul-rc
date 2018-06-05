@@ -1110,7 +1110,6 @@ export const fundOtherCustomerWallet = (amount, email) => {
   if (!recipient) {
     return false;
   }
-  console.log('recipient', recipient)
   Accounts.update({
     emails: { $elemMatch: { address: email } }
   }, {
@@ -1118,6 +1117,7 @@ export const fundOtherCustomerWallet = (amount, email) => {
       wallet: amount
     }
   });
+  
   Accounts.update({
     _id: user._id
   }, {
@@ -1125,6 +1125,7 @@ export const fundOtherCustomerWallet = (amount, email) => {
       wallet: (-1 * amount)
     }
   });
+  return true;
 };
 
 Meteor.methods({
@@ -1146,5 +1147,5 @@ Meteor.methods({
   "accounts/getWalletBalance": getWalletBalance,
   "accounts/fundWallet": fundWallet,
   "accounts/deductFromWallet": deductFromWallet,
-  // "accounts/fundOtherCustomerWallet": fundOtherCustomerWallet
+  "accounts/fundOtherCustomerWallet": fundOtherCustomerWallet,
 });

@@ -23,7 +23,10 @@
                   <div class="panel-heading balance-panel">
                     <h4 class="payment-header no-margin-down">Fund My Wallet</h4>
                   </div>
-                  <div class="panel-body">
+                  <div class="panel-body same-height">
+                    <p class="text-panel">
+                        Fund your wallet via your credit card for secured and seamless in-app purchases
+                    </p>
                     <div class="form-group">
                       <form class="form-pad">
                         <label
@@ -54,6 +57,9 @@
                       <h4 class="payment-header no-margin-down">Fund Friend's Wallet</h4>
                     </div>
                     <div class="panel-body">
+                        <p class="text-panel">
+                            Transfer funds to your in-app friends here
+                        </p>
                       <div class="form-group form-margin-down">
                         <form class="form-pad">
                           <label>
@@ -69,14 +75,17 @@
                             Amount (in Naira)
                           </label>
                           <input
-                            id="transferFund"
+                            id="transferAmount"
                             class="form-control form-width"
                             type="number"
                             placeholder="e.g: 5000"
                           />
                           <button
                             id="transferFund"
-                            class="form-width submit-pad btn-darkgrey waves-effect waves-teal" type="submit">Transfer Fund
+                            class="form-width submit-pad btn-darkgrey waves-effect waves-teal"
+                            type="submit">
+                            <span id="btn2-complete-order">Transfer Fund</span>
+                            <i class="fa fa-spinner fa-spin hidden" id="btn2-processing"></i>
                           </button>
                         </form>
                       </div>
