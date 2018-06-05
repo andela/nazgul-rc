@@ -121,7 +121,7 @@ const fundWallet = (amount) => {
 
 const fundOtherCustomerWallet = (amount, email, template) => {
   Alerts.alert({
-    title: `You are about to transfer ${amount} to ${email}`,
+    title: `You are about to transfer ₦${amount} to ${email}`,
     type: "warning",
     showCancelButton: true,
     confirmButtonText: "Confirm"
