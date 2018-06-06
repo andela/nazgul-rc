@@ -5,8 +5,20 @@ import "/node_modules/intro.js/introjs.css";
 const steps = [
   {
     intro: `<h3>Welcome to Reaction Commerce </h3>
-            <hr>
+            <hr />
             <p>Thank you for using Reaction Commerce. Let me take you through the platform.</p>`
+  },
+  {
+    element: "#openReviewsModal",
+    intro: `<h3>SHOP REVIEW</h3>
+            <hr />
+            <p>When customers review your shop, 
+            the average ratings of those reviews are computed. You can always get the average rating of those reviews here.</p>
+    `
+  },
+  {
+    element: ".accounts button",
+    intro: "Under this Account Menu, you can fund your wallet and transfer funds with the wallet feature. Also, this is where you sign out from your account."
   },
   {
     element: ".nazgul-for-all-0",
@@ -64,6 +76,8 @@ const steps = [
 ];
 
 const intro = new introJs().onafterchange(function (targetElement) {
+  if (targetElement.id === "openReviewsModal"
+    || targetElement.className === "rui btn btn-default flat introjs-showElement introjs-relativePosition") return;
   targetElement.click();
 });
 intro.setOptions({ steps });

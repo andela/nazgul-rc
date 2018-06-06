@@ -12,7 +12,7 @@ const styles = {
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    backgroundColor: "rgba(0, 0, 0, 0)",
     zIndex: 1040,
     padding: 0
   }
@@ -38,7 +38,7 @@ class Overlay extends Component {
       animation: { opacity: 0 },
       duration: 200
     }
-  }
+  };
 
   renderOverlay() {
     if (this.props.isVisible) {
@@ -46,13 +46,7 @@ class Overlay extends Component {
         rui: true
       });
 
-      return (
-        <div
-          className={baseClassName}
-          style={styles.base}
-          onClick={this.props.onClick}
-        />
-      );
+      return <div className={baseClassName} style={styles.base} onClick={this.props.onClick} />;
     }
 
     return null;
@@ -60,10 +54,7 @@ class Overlay extends Component {
 
   render() {
     return (
-      <VelocityTransitionGroup
-        enter={this.state.enterAnimation}
-        leave={this.state.leaveAnimation}
-      >
+      <VelocityTransitionGroup enter={this.state.enterAnimation} leave={this.state.leaveAnimation}>
         {this.renderOverlay()}
       </VelocityTransitionGroup>
     );
