@@ -1095,6 +1095,39 @@ export const deductFromWallet = (amount, userId) => {
   return true;
 };
 
+/**
+ * @name accounts/fundOtherCustomerWallet
+ * @memberof Methods/Accounts
+ * @method
+ * @summary funds other customer wallet
+ * @returns {Boolean} - returns boolean.
+ */
+export const fundOtherCustomerWallet = (amount, email) => {
+  check(amount, validAmountCheck);
+  check(email, validEmailCheck);
+  const user = Meteor.user();
+  const recipient = Accounts.findOne({ emails: { $elemMatch: { address: email } } });
+  if (!recipient) {
+    return false;
+  }
+  Accounts.update({
+    emails: { $elemMatch: { address: email } }
+  }, {
+    $inc: {
+      wallet: amount
+    }
+  });
+  
+  Accounts.update({
+    _id: user._id
+  }, {
+    $inc: {
+      wallet: (-1 * amount)
+    }
+  });
+  return true;
+};
+
 Meteor.methods({
   "accounts/verifyAccount": verifyAccount,
   "accounts/validateAddress": validateAddress,
@@ -1113,6 +1146,6 @@ Meteor.methods({
   "accounts/removeEmailAddress": removeEmailAddress,
   "accounts/getWalletBalance": getWalletBalance,
   "accounts/fundWallet": fundWallet,
-  "accounts/deductFromWallet": deductFromWallet
-
+  "accounts/deductFromWallet": deductFromWallet,
+  "accounts/fundOtherCustomerWallet": fundOtherCustomerWallet,
 });

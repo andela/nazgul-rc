@@ -12,6 +12,10 @@ function uiEnd(template, buttonText) {
   return template.$("#btn-complete-order").text(buttonText);
 }
 
+function uiEnd2(template, buttonText) {
+  return template.$("#btn2-complete-order").text(buttonText);
+}
+
 function paymentAlert(errorMessage) {
   return $(".alert").removeClass("hidden").text(errorMessage);
 }
@@ -31,10 +35,22 @@ function beginSubmit(template) {
   return template.$("#btn-processing").removeClass("hidden");
 }
 
+function beginSubmit2(template) {
+  template.$(":input").attr("disabled", true);
+  template.$("#btn2-complete-order").text("Transferring   ");
+  return template.$("#btn2-processing").removeClass("hidden");
+}
+
 function endSubmit(template) {
   template.$(":input").attr("disabled", false);
   template.$("#btn-complete-order").text("Submit Fund");
   return template.$("#btn-processing").addClass("hidden");
+}
+
+function endSubmit2(template) {
+  template.$(":input").attr("disabled", false);
+  template.$("#btn2-complete-order").text("Transfer Fund");
+  return template.$("#btn2-processing").addClass("hidden");
 }
 
 Template.walletDashboard.helpers({
@@ -100,8 +116,30 @@ const fundWalletWithPaystack = (amount) => {
 const fundWallet = (amount) => {
   const userId = Meteor.userId();
 
-  // Perform some check here to ensure that amount is of the wright type
   Meteor.call("accounts/fundWallet", amount, userId);
+};
+
+const fundOtherCustomerWallet = (amount, email, template) => {
+  Alerts.alert({
+    title: `You are about to transfer ₦${amount} to ${email}`,
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Confirm"
+  }, (isConfirm) => {
+    if (isConfirm) {
+      Meteor.call("accounts/fundOtherCustomerWallet", amount, email, (err, data) => {
+        if (!err) {
+          if (!data) {
+            Alerts.toast("User with this email does not exist.", "error");
+            endSubmit2(template, "#btn2-processing");
+          } else {
+            Alerts.toast(`Yassss! ₦${amount} has been transfered to ${email}`);
+          }
+        }
+      });
+    }
+    endSubmit2(template, "#btn2-processing");
+  });
 };
 
 Template.walletDashboard.events({
@@ -114,18 +152,63 @@ Template.walletDashboard.events({
       Alerts.toast("Enter a valid amount", "error");
       uiEnd(template, "Resubmit Payment");
     } else {
-      beginSubmit(template, "Submitting");
+      beginSubmit(template, "#btn-processing");
       fundWalletWithPaystack(amount)
         .then((result) => {
           fundWallet((result.amount / 100));
-          endSubmit(template);
+          endSubmit(template, "#btn-processing");
           $('input[name="addAmount"]').val("");
           Alerts.toast(`Yassss! ₦${(result.amount / 100)} has been added to your wallet`);
         })
         .catch((error) => {
-          endSubmit(template);
+          endSubmit(template, "#btn-processing");
           Alerts.toast(error.message, "error");
         });
+    }
+  }
+});
+
+Template.walletDashboard.events({
+  "click #transferFund"() {
+    event.preventDefault();
+    const template = Template.instance();
+    let transferAmount = $('input[id="transferAmount"]').val();
+    const email = $('input[id="transferEmail"]').val();
+    transferAmount = +transferAmount;
+    if (!email || email === undefined) {
+      Alerts.toast("Email of in-app friend is required", "error");
+      uiEnd2(template, "Transfer Funds");
+    }
+    const regexForEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; //eslint-disable-line
+    const validEmail =  regexForEmail.test(email);
+    if (!transferAmount || isNaN(transferAmount) || transferAmount === 0) {
+      Alerts.toast("Enter a valid amount", "error");
+      uiEnd2(template, "Transfer Funds");
+    } else if (!validEmail) {
+      Alerts.toast("Enter a valid email", "error");
+      uiEnd2(template, "Transfer Funds");
+    } else if (Reaction.Subscriptions && Reaction.Subscriptions.Account && Reaction.Subscriptions.Account.ready()) {
+      beginSubmit2(template);
+
+      const user = Meteor.user();
+      const senderAccount = Accounts.findOne({ userId: user._id });
+      const senderEmail = senderAccount.emails[0].address;
+
+      if (email === senderEmail) {
+        Alerts.toast("You can't transfer funds to yourself", "error");
+        endSubmit2(template);
+        return null;
+      }
+
+      Meteor.call("accounts/getWalletBalance", (error, balance) => {
+        if (transferAmount > balance) {
+          // Display an error alert
+          Alerts.alert("Insufficient Funds, Kindly fund your wallet and retry!");
+          endSubmit2(template);
+        } else {
+          fundOtherCustomerWallet(transferAmount, email, template);
+        }
+      });
     }
   }
 });
