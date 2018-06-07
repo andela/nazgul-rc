@@ -10,9 +10,11 @@ a.rui.tag.link:hover {
   background-color:rgba(0,0,0,0.1) !important;
   color: white !important
 }
-.bell-nav:hover{
+
+.bell-nav:hover {
   color: #000
 }
+
 .admin-control-quicklinks {
   color: #fff;
 }
@@ -115,7 +117,7 @@ html:not(.rtl) .rui.admin.action-view {
   min-width: @admin-controls-menu-width;
   width: @admin-controls-menu-width;
 
-  background-color: #324D5C;
+  background-color: #324D5C; 
   position: relative;
   z-index: @zindex-modal;
 
@@ -235,8 +237,6 @@ html:not(.rtl) .rui.admin.action-view {
   padding: 20px;
 }
 
-// Only apply form-control styles to non .rui form fields
-// This should only apply to normal BS3 / Autoform fields
 .admin-controls-content .form-group:not(.rui) input:not([type=checkbox]) {
   .form-control;
 }
@@ -249,6 +249,25 @@ body.admin-vertical .admin-controls {
   height: 20vh;
   min-width: 100%;
   max-width: 100%;
+}
+
+.reviews-l {
+  margin-top: 15px;
+  height: 415px;
+  border: 1px solid black;
+}
+
+.reviews-n:hover {
+  background-color: rgba(0,0,0,0.1) !important;
+}
+
+.review-box {
+  margin-top: 10px;
+}
+
+
+.reviewer-name {
+  text-align: right;
 }
 
 .admin-control-open {
@@ -268,7 +287,6 @@ body.admin-vertical .admin-controls {
 .admin-controls-content label {
   font-weight: lighter;
 }
-
 
 .rui.admin.action-view {
   z-index: @zindex-modal;
